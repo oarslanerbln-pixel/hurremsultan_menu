@@ -346,11 +346,11 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
               <X className="w-5 h-5" />
             </button>
 
-            {/* Image Header - HUGE */}
+            {/* Image Header - Centered & Sized */}
             {item.imageUrl && (
               <motion.div 
                 layoutId={`image-container-${item.id}`}
-                className="relative w-full flex items-center justify-center aspect-square overflow-visible z-50 pointer-events-none"
+                className="relative w-56 h-56 sm:w-64 sm:h-64 flex items-center justify-center overflow-visible z-50 pointer-events-none"
               >
                 {/* Aura for Special Drinks */}
                 {isSignature && <IceShatterEffect />}
@@ -378,7 +378,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className={`w-full theme-modal p-6 relative z-40 ${item.imageUrl ? "pt-24 mt-[-4rem]" : "pt-8 mt-4"} max-h-[70vh] overflow-y-auto overflow-x-hidden no-scrollbar`}
+              className={`w-full theme-modal p-6 relative z-40 ${item.imageUrl ? "pt-20 mt-[-3rem]" : "pt-8 mt-4"} max-h-[55vh] sm:max-h-[60vh] overflow-y-auto overflow-x-hidden no-scrollbar`}
             >
               <div className="flex justify-between items-start gap-4 mb-4">
                 <h2 className="font-display text-2xl uppercase tracking-widest theme-text leading-tight">
