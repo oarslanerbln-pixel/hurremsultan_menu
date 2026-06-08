@@ -35,6 +35,7 @@ export const menuData: MenuItem[] = [
       EN: 'A classic favorite! The intense taste of juicy red and green apples with a fine anise note. Perfect for lovers of traditional shisha flavors.', 
       TR: 'Klasik bir favori! Sulu kırmızı ve yeşil elmaların ince bir anason notasıyla yoğun tadı. Geleneksel nargile aroması sevenler için mükemmel.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_apple.png',
     category: 'shisha',
     subcategory: 'Classic',
     tags: ['classic', 'intense'],
@@ -49,6 +50,7 @@ export const menuData: MenuItem[] = [
       EN: 'Fruity apple meets refreshing mint - a perfect combination for an invigorating smoking experience.', 
       TR: 'Meyvemsi elma ferahlatıcı nane ile buluşuyor - canlandırıcı bir nargile keyfi için mükemmel bir kombinasyon.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_apple_mint.png',
     category: 'shisha',
     subcategory: 'Classic',
     tags: ['classic', 'fresh', 'fruity'],
@@ -63,6 +65,7 @@ export const menuData: MenuItem[] = [
       EN: 'The sweetness of juicy grapes combined with the cool freshness of mint, an absolute highlight for every shisha lover.', 
       TR: 'Sulu üzümlerin tatlılığı, nanenin serinletici ferahlığıyla birleşiyor, her nargile sever için kesinlikle denenmesi gereken bir lezzet.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_grape_mint.png',
     category: 'shisha',
     subcategory: 'Classic',
     tags: ['classic', 'fresh', 'sweet'],
@@ -77,6 +80,7 @@ export const menuData: MenuItem[] = [
       EN: 'A strong, intense taste of black grapes, combined with a cool mint note. Perfect for lovers of strong and cool flavors.', 
       TR: 'Siyah üzümlerin ferahlatıcı nane notasıyla harmanlanmış güçlü ve yoğun tadı. Keskin ve serinletici aroma sevenler için ideal.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_black_nana.png',
     category: 'shisha',
     subcategory: 'Classic',
     tags: ['intense', 'fresh', 'dark'],
@@ -91,6 +95,7 @@ export const menuData: MenuItem[] = [
       EN: 'A fascinating mix of sweet, fruity notes and the sparkling freshness of grapefruit. A touch of exoticism that enchants your senses.', 
       TR: 'Tatlı, meyvemsi notaların ve greyfurtun canlı ferahlığının büyüleyici bir karışımı. Duyularınızı büyüleyecek egzotik bir dokunuş.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_sternstaub.png',
     category: 'shisha',
     subcategory: 'Classic',
     tags: ['sweet', 'exotic', 'fruity'],
@@ -105,6 +110,7 @@ export const menuData: MenuItem[] = [
       EN: 'A refreshing taste of juicy watermelon combined with a splash of lime - clear, fruity and incredibly refreshing.', 
       TR: 'Sulu karpuzun ferahlatıcı tadı, bir miktar misket limonu ile harmanlanıyor - net, meyvemsi ve inanılmaz derecede ferahlatıcı.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_luftschloss.png',
     category: 'shisha',
     subcategory: 'Classic',
     tags: ['fresh', 'fruity', 'sweet'],
@@ -119,6 +125,7 @@ export const menuData: MenuItem[] = [
       EN: 'The sparkling freshness of limes combined with the cool note of mint. A real refreshment for hot days.', 
       TR: 'Misket limonu ferahlığının, nanenin serinletici notasıyla birleşimi. Sıcak günler için gerçek bir ferahlık.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_lime_mint.png',
     category: 'shisha',
     subcategory: 'Classic',
     tags: ['fresh', 'citrus'],
@@ -133,6 +140,7 @@ export const menuData: MenuItem[] = [
       EN: 'Fresh lemon taste with an icy finish that provides a pleasantly cool smoke.', 
       TR: 'Rahatlatıcı, serin bir içim sağlayan, buz gibi bir bitişe sahip taze limon tadı.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_lemon_chill.png',
     category: 'shisha',
     subcategory: 'Classic',
     tags: ['fresh', 'citrus', 'ice'],
@@ -147,6 +155,7 @@ export const menuData: MenuItem[] = [
       EN: 'A harmonious mix of juicy blueberries and sweet aromatic grapes - perfect for a fruity-refreshing smoking experience.', 
       TR: 'Sulu yaban mersinleri ve tatlı aromatik üzümlerin uyumlu karışımı - meyvemsi ve ferahlatıcı bir nargile deneyimi için mükemmel.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_blueberry.png',
     category: 'shisha',
     subcategory: 'Classic',
     tags: ['fruity', 'sweet'],
@@ -161,6 +170,7 @@ export const menuData: MenuItem[] = [
       EN: 'A sweet combination of ripe strawberry and juicy watermelon and a fruity mix that inspires.', 
       TR: 'Olgun çilek ve sulu karpuzun tatlı bir kombinasyonu; sizi büyüleyecek meyvemsi bir karışım.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_nasty_girl.png',
     category: 'shisha',
     subcategory: 'Classic',
     tags: ['sweet', 'fruity'],
@@ -175,6 +185,7 @@ export const menuData: MenuItem[] = [
       EN: 'A blend of watermelon, honeydew melon, mint and passion fruit. Perfect balance of sweet and floral notes, very smooth.', 
       TR: 'Karpuz, kavun, nane ve çarkıfelek meyvesinin bir karışımı. Tatlı ve çiçeksi notaların mükemmel dengesi, içimi oldukça yumuşak.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_love66.png',
     category: 'shisha',
     subcategory: 'Premium Blends',
     tags: ['sweet', 'fruity', 'exotic'],
@@ -189,6 +200,7 @@ export const menuData: MenuItem[] = [
       EN: 'The juicy taste of ripe peaches, perfectly complemented by the freshness of mint - a real classic.', 
       TR: 'Nanenin ferahlığıyla mükemmel bir şekilde tamamlanan olgun şeftalilerin sulu tadı - gerçek bir klasik.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_peach_mint.png',
     category: 'shisha',
     subcategory: 'Classic',
     tags: ['sweet', 'fresh', 'fruity'],
@@ -203,6 +215,7 @@ export const menuData: MenuItem[] = [
       EN: 'An intense, fruity mix of sweet strawberry notes and the characteristic aroma of Turkish chewing gum. Oriental flair.', 
       TR: 'Tatlı çilek notaları ve Türk sakızının (Falım) karakteristik aromasının yoğun, meyveli bir karışımı. Oryantal bir esinti.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_falim_red.png',
     category: 'shisha',
     subcategory: 'Premium Blends',
     tags: ['sweet', 'fruity', 'exotic'],
@@ -217,6 +230,7 @@ export const menuData: MenuItem[] = [
       EN: 'A unique mix of fruity cactus and a cool, icy note - for an extraordinary taste experience.', 
       TR: 'Meyvemsi kaktüs ve serin, buz gibi bir notanın eşsiz bir karışımı - sıra dışı bir lezzet deneyimi için.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_ice_kaktus.png',
     category: 'shisha',
     subcategory: 'Premium Blends',
     tags: ['fresh', 'ice', 'exotic'],
@@ -231,6 +245,7 @@ export const menuData: MenuItem[] = [
       EN: 'An exotic mixture of wild berries, grapes and other exquisite fruits - sweet, fruity and wonderfully refreshing.', 
       TR: 'Orman meyveleri, üzüm ve diğer seçkin meyvelerin egzotik bir karışımı - tatlı, meyvemsi ve harika bir şekilde ferahlatıcı.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_african_queen.png',
     category: 'shisha',
     subcategory: 'Premium Blends',
     tags: ['sweet', 'fruity', 'exotic'],
@@ -245,6 +260,7 @@ export const menuData: MenuItem[] = [
       EN: 'The sweet, creamy taste of coconut and almonds, inspired by the popular dessert - a treat that melts on the tongue.', 
       TR: 'Sevilen tatlıdan ilham alan Hindistan cevizi ve bademin tatlı, kremsi tadı - ağızda eriyen bir lezzet.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_raffaello.png',
     category: 'shisha',
     subcategory: 'Premium Blends',
     tags: ['sweet', 'creamy'],
@@ -259,6 +275,7 @@ export const menuData: MenuItem[] = [
       EN: 'Crisp, fresh apples with an icy note that provide a pleasantly cool smoking pleasure.', 
       TR: 'Keyifli ve serin bir içim sağlayan, buz gibi notasıyla çıtır, taze elmalar.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_ice_apfel.png',
     category: 'shisha',
     subcategory: 'Classic',
     tags: ['fresh', 'ice', 'fruity'],
@@ -273,12 +290,13 @@ export const menuData: MenuItem[] = [
       EN: 'Experience our exclusive Hürrem LED shisha with the high-quality Quasar bowl. Choose your individual tobacco mix from two varieties entirely according to your taste.', 
       TR: 'Özel Hürrem LED nargilemizi yüksek kaliteli Quasar lüle ile deneyimleyin. İki çeşit tütün ile tamamen damak zevkinize özel karışımınızı oluşturun.' 
     },
+    imageUrl: '/images/shisha/shisha_concept_led.png',
     category: 'shisha',
     subcategory: 'Signature Blends',
     isSignature: true,
     tags: ['premium', 'exclusive'],
-    arModelUrl: '/models/hookah_premium.glb',
-    arIosModelUrl: '/models/hookah_premium.usdz',
+    arModelUrl: '/models/hookah.glb',
+    arIosModelUrl: '',
     themeColor: '#FFD700',
     intensity: 3,
   },
@@ -535,7 +553,8 @@ export const menuData: MenuItem[] = [
     description: { DE: 'Frische Minze, Limette und Soda - erfrischend ohne Alkohol.', EN: 'Fresh mint, lime and soda - refreshing without alcohol.', TR: 'Taze nane, limon ve soda - alkolsüz serinletici.' },
     category: 'drinks',
     subcategory: 'Cocktails',
-    tags: ['fresh']
+    tags: ['fresh'],
+    arModelUrl: '/models/hookah.glb', // Placeholder for drink model
   },
   {
     id: 'd25',

@@ -130,11 +130,24 @@ const Background3D: React.FC = () => {
     return window.matchMedia('(max-width: 768px)').matches;
   });
   
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
+
   useEffect(() => {
-    const mq = window.matchMedia('(max-width: 768px)');
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
+    const mqMobile = window.matchMedia('(max-width: 768px)');
+    const handlerMobile = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mqMobile.addEventListener('change', handlerMobile);
+    
+    const mqMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handlerMotion = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mqMotion.addEventListener('change', handlerMotion);
+    
+    return () => {
+      mqMobile.removeEventListener('change', handlerMobile);
+      mqMotion.removeEventListener('change', handlerMotion);
+    };
   }, []);
 
   // Background color is handled by AmbientBackground, making this layer transparent
@@ -142,19 +155,21 @@ const Background3D: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-0 bg-transparent pointer-events-none transition-colors duration-[3000ms]">
-      <Canvas
-        camera={{ position: [0, 2, 12], fov: 55 }}
-        dpr={[1, 1]}
-        gl={{ antialias: false, alpha: true }}
-      >
-        <ambientLight intensity={0.3} color="#FCFBF8" />
-        <directionalLight position={[10, 10, 5]} intensity={0.6} color="#FFF5E1" />
-        <directionalLight position={[-10, -5, 5]} intensity={0.4} color="#C5A55A" />
-        <spotLight position={[0, 10, 10]} intensity={1.2} angle={0.6} color="#D4AF37" penumbra={1} />
-        
-        <ParametricFabric isEvening={isEvening} isMobile={isMobile} />
-        <AccentLights />
-      </Canvas>
+      {!prefersReducedMotion && (
+        <Canvas
+          camera={{ position: [0, 2, 12], fov: 55 }}
+          dpr={[1, isMobile ? 1.5 : 2]}
+          gl={{ antialias: false, alpha: true }}
+        >
+          <ambientLight intensity={0.3} color="#FCFBF8" />
+          <directionalLight position={[10, 10, 5]} intensity={0.6} color="#FFF5E1" />
+          <directionalLight position={[-10, -5, 5]} intensity={0.4} color="#C5A55A" />
+          <spotLight position={[0, 10, 10]} intensity={1.2} angle={0.6} color="#D4AF37" penumbra={1} />
+          
+          <ParametricFabric isEvening={isEvening} isMobile={isMobile} />
+          <AccentLights />
+        </Canvas>
+      )}
       
       {/* Light Theme Vignettes */}
       <div className={`absolute inset-0 bg-gradient-to-b from-current via-transparent to-transparent h-[25%] transition-colors duration-[3000ms] ${isEvening ? 'text-[#F5EAD4]' : 'text-[#FFFDF8]'}`} />

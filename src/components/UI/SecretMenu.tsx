@@ -47,7 +47,6 @@ const SecretMenu: React.FC<SecretMenuProps> = ({ isOpen, onClose }) => {
   const [pin, setPin] = useState('');
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const TARGET_PIN = '1111';
 
   // Reset state when closed
   useEffect(() => {
@@ -60,15 +59,17 @@ const SecretMenu: React.FC<SecretMenuProps> = ({ isOpen, onClose }) => {
     }
   }, [isOpen]);
 
-  const handlePinPress = (num: string) => {
-    if (pin.length >= 4 || hasError) return;
-    if (navigator.vibrate) navigator.vibrate(10);
-    
-    const newPin = pin + num;
-    setPin(newPin);
-    
-    if (newPin.length === 4) {
-      if (newPin === TARGET_PIN) {
+  const verifyPin = async (inputPin: string) => {
+    try {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(inputPin);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      
+      const targetHash = import.meta.env.VITE_ADMIN_PIN_HASH;
+      
+      if (targetHash && hashHex === targetHash) {
         if (navigator.vibrate) navigator.vibrate([30, 30, 30]);
         setTimeout(() => setIsUnlocked(true), 200);
       } else {
@@ -79,6 +80,25 @@ const SecretMenu: React.FC<SecretMenuProps> = ({ isOpen, onClose }) => {
           setHasError(false);
         }, 600);
       }
+    } catch (err) {
+      console.error('Crypto error', err);
+      setHasError(true);
+      setTimeout(() => {
+        setPin('');
+        setHasError(false);
+      }, 600);
+    }
+  };
+
+  const handlePinPress = (num: string) => {
+    if (pin.length >= 4 || hasError) return;
+    if (navigator.vibrate) navigator.vibrate(10);
+    
+    const newPin = pin + num;
+    setPin(newPin);
+    
+    if (newPin.length === 4) {
+      verifyPin(newPin);
     }
   };
 

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { Heart, Box, X, Sparkles } from 'lucide-react';
+import { Heart, Box, X, Sparkles, Plus } from 'lucide-react';
 import { type MenuItem } from '../../data/menu';
 import { useWishlist } from '../../context/WishlistContext';
+import { useCart } from '../../context/CartContext';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { translations } from '../../i18n/translations';
 import { useConcept } from '../../context/ConceptContext';
@@ -33,6 +34,7 @@ const INTENSITY_HEIGHTS = [
 const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
   const isSignature = item.isSignature;
   const { toggle, has } = useWishlist();
+  const { addItem } = useCart();
   const { lang } = useLanguage();
   const { concept } = useConcept();
   const isWishlisted = has(item.id);
@@ -55,7 +57,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
 
   // Initialize random particle values once to avoid pure render violations
   const [particlesConfig] = React.useState(() => {
-    if (!isSignature) return [];
+    if (!isSignature && item.category !== 'shisha') return [];
     return [...Array(5)].map(() => ({
       left: 15 + Math.random() * 70,
       tx: (Math.random() - 0.5) * 40,
@@ -141,12 +143,24 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
             className="absolute inset-0 bg-cover bg-center blur-2xl opacity-50 scale-125 pointer-events-none transition-opacity duration-700 group-hover:opacity-70"
             style={{ backgroundImage: `url(${item.imageUrl})` }}
           />
+
+          {/* LED Glow specifically for Hürrem Spezial Hookah (s18) */}
+          {item.id === 's18' && (
+            <div className="absolute inset-0 pointer-events-none z-10 mix-blend-color-dodge opacity-80 animate-pulse">
+              <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/40 via-purple-500/40 to-fuchsia-500/40 blur-xl" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-pink-500/30 rounded-full blur-2xl" />
+            </div>
+          )}
           
           <motion.img 
             src={item.imageUrl} 
             alt={itemName} 
-            className="relative w-full h-full object-cover object-[center_30%] transition-transform duration-[800ms] ease-out group-hover:scale-105 drop-shadow-2xl" 
+            className="relative w-full h-full object-cover object-[center_30%] transition-transform duration-[800ms] ease-out group-hover:scale-105 drop-shadow-[0_0_15px_rgba(218,165,32,0.3)] brightness-90 contrast-[1.15] saturate-[1.1]" 
             loading="lazy"
+            style={{
+              maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)'
+            }}
           />
 
           {/* Light Sweep Effect (Işık Vurma) */}
@@ -154,8 +168,8 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
             <div className="absolute top-0 bottom-0 left-[-150%] w-3/4 bg-gradient-to-r from-transparent via-white/50 to-transparent animate-sweep" />
           </div>
 
-          {/* Floating Magical Particles (Uçuşan Tanecikler) - Sadece Signature'lara özel */}
-          {isSignature && (
+          {/* Floating Magical Particles (Uçuşan Tanecikler) - Signature ve Tüm Nargileler için */}
+          {(isSignature || item.category === 'shisha') && (
             <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
               {particlesConfig.map((config, i) => (
                 <div
@@ -201,26 +215,42 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
           </span>
 
           {/* Wishlist heart button — 44px touch target */}
-          <motion.button
-            onClick={e => {
-              e.stopPropagation();
-              toggle(item);
-              if (navigator.vibrate) navigator.vibrate(15);
-            }}
-            whileTap={{ scale: 0.75, rotate: -10 }}
-            whileHover={{ scale: 1.15 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 14 }}
-            className="w-11 h-11 -m-2 flex items-center justify-center focus:outline-none touch-target"
-            aria-label={isWishlisted ? `Remove ${itemName} from selection` : `Add ${itemName} to selection`}
-          >
-            <Heart
-              className={`w-[18px] h-[18px] transition-all duration-300 ${
-                isWishlisted
-                  ? 'text-gold-500 fill-gold-500 drop-shadow-[0_0_6px_rgba(197,165,90,0.5)]'
-                  : 'text-[#D8D2CA] group-hover:text-gold-500/50'
-              }`}
-            />
-          </motion.button>
+          <div className="flex gap-1 mt-1">
+            <motion.button
+              onClick={e => {
+                e.stopPropagation();
+                toggle(item);
+                if (navigator.vibrate) navigator.vibrate(15);
+              }}
+              whileTap={{ scale: 0.75, rotate: -10 }}
+              whileHover={{ scale: 1.15 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 14 }}
+              className="w-10 h-10 -m-1 flex items-center justify-center focus:outline-none touch-target"
+              aria-label={isWishlisted ? `Remove ${itemName} from selection` : `Add ${itemName} to selection`}
+            >
+              <Heart
+                className={`w-[16px] h-[16px] transition-all duration-300 ${
+                  isWishlisted
+                    ? 'text-gold-500 fill-gold-500 drop-shadow-[0_0_6px_rgba(197,165,90,0.5)]'
+                    : 'text-[#D8D2CA] group-hover:text-gold-500/50'
+                }`}
+              />
+            </motion.button>
+
+            {/* Add to Cart button */}
+            <motion.button
+              onClick={e => {
+                e.stopPropagation();
+                addItem(item);
+              }}
+              whileTap={{ scale: 0.85 }}
+              whileHover={{ scale: 1.05 }}
+              className="w-10 h-10 -m-1 flex items-center justify-center focus:outline-none bg-gold-500/10 rounded-full border border-gold-500/20 hover:bg-gold-500/20 transition-colors"
+              aria-label={`Add ${itemName} to cart`}
+            >
+              <Plus className="w-[16px] h-[16px] text-gold-300" />
+            </motion.button>
+          </div>
         </div>
       </div>
 

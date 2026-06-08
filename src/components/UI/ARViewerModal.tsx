@@ -10,6 +10,58 @@ interface ARViewerModalProps {
   title: string;
 }
 
+import { useMemo } from 'react';
+
+const Particles = () => {
+  const particles = useMemo(() => {
+    return [...Array(15)].map((_, i) => ({
+      id: i,
+      width: Math.random() * 4 + 2 + 'px',
+      height: Math.random() * 4 + 2 + 'px',
+      color: i % 2 === 0 ? '#C5A55A' : '#E81CFF',
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      y: [0, -Math.random() * 100 - 50],
+      duration: Math.random() * 3 + 3,
+      delay: Math.random() * 2,
+    }));
+  }, []);
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      {particles.map((p) => (
+        <motion.div
+          key={p.id}
+          className="absolute rounded-full"
+          style={{
+            width: p.width,
+            height: p.height,
+            background: p.color,
+            boxShadow: `0 0 10px ${p.color}`,
+            top: p.top,
+            left: p.left,
+          }}
+          animate={{
+            y: p.y,
+            opacity: [0, 0.8, 0],
+            scale: [0, 1.5, 0],
+          }}
+          transition={{
+            duration: p.duration,
+            repeat: Infinity,
+            delay: p.delay,
+            ease: "easeInOut"
+          }}
+        />
+      ))}
+      {/* Neon Glows */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#C5A55A]/20 blur-[80px] rounded-full" />
+      <div className="absolute bottom-0 left-1/4 w-48 h-48 bg-[#E81CFF]/10 blur-[60px] rounded-full" />
+      <div className="absolute top-0 right-1/4 w-48 h-48 bg-[#00F0FF]/10 blur-[60px] rounded-full" />
+    </div>
+  );
+};
+
 export default function ARViewerModal({ isOpen, onClose, modelUrl, iosModelUrl, title }: ARViewerModalProps) {
   useEffect(() => {
     if (isOpen) {
@@ -57,7 +109,9 @@ export default function ARViewerModal({ isOpen, onClose, modelUrl, iosModelUrl, 
             </div>
 
             {/* Model Viewer */}
-            <div className="flex-1 w-full h-full relative bg-gradient-to-b from-[#FAF8F5] to-[#E8E4DE]">
+            <div className="flex-1 w-full h-full relative bg-gray-900 overflow-hidden">
+              <Particles />
+              
               {/* @ts-expect-error: Web component not typed */}
               <model-viewer
                 src={modelUrl}
