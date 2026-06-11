@@ -3,6 +3,9 @@ import { Canvas, useFrame } from '@react-three/fiber';
 
 import * as THREE from 'three';
 import { useMenu } from '../../context/MenuContext';
+import { useConcept } from '../../context/ConceptContext';
+
+// Abstract Golden Trophy removed as requested
 
 const ParametricFabric = ({ isEvening, isMobile }: { isEvening: boolean; isMobile: boolean }) => {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -75,6 +78,7 @@ const ParametricFabric = ({ isEvening, isMobile }: { isEvening: boolean; isMobil
 const AccentLights = () => {
   const groupRef = useRef<THREE.Group>(null);
   const { activeCategory } = useMenu();
+  const { concept } = useConcept();
   
   // Synesthesia Target Colors
   const targetColorMain = useMemo(() => new THREE.Color(), []);
@@ -85,10 +89,14 @@ const AccentLights = () => {
     
     // Synesthesia Logic: Shift main accent light based on category
     let hex = "#FFD700"; // Default Gold
-    if (activeCategory === 'drinks') hex = "#88CCFF"; // Ice Blue for Drinks
-    if (activeCategory === 'shisha') hex = "#FF6B6B"; // Ruby Red for Shisha (Fruity/Fire)
-    if (activeCategory === 'food') hex = "#A8E6CF";   // Fresh Green for Food
-    if (activeCategory === 'kombis') hex = "#C5A55A"; // Crown Gold for VIP/Kombis
+    if (concept === 'world-cup') {
+      hex = "#10B981"; // Emerald Green for Stadium Feel
+    } else {
+      if (activeCategory === 'drinks') hex = "#88CCFF"; // Ice Blue for Drinks
+      if (activeCategory === 'shisha') hex = "#FF6B6B"; // Ruby Red for Shisha (Fruity/Fire)
+      if (activeCategory === 'food') hex = "#A8E6CF";   // Fresh Green for Food
+      if (activeCategory === 'kombis') hex = "#C5A55A"; // Crown Gold for VIP/Kombis
+    }
     
     targetColorMain.lerp(new THREE.Color(hex), 0.02); // Smooth transition
     
@@ -111,9 +119,9 @@ const AccentLights = () => {
   return (
     <group ref={groupRef}>
       <pointLight intensity={0.5} distance={15} /> {/* Dynamic Synesthesia Light */}
-      <pointLight color="#FCFBF8" intensity={0.8} distance={20} /> {/* Brilliant White */}
+      <pointLight color={concept === 'world-cup' ? "#10B981" : "#FCFBF8"} intensity={0.8} distance={20} /> {/* Brilliant White / Emerald */}
       <pointLight color="#D4AF37" intensity={0.6} distance={15} /> {/* Deep Gold */}
-      <pointLight color="#FFF5E1" intensity={0.7} distance={18} /> {/* Warm Cream */}
+      <pointLight color={concept === 'world-cup' ? "#059669" : "#FFF5E1"} intensity={0.7} distance={18} /> {/* Warm Cream / Dark Green */}
       <pointLight color="#C5A55A" intensity={0.8} distance={12} /> {/* Classic Accent Gold */}
     </group>
   );
@@ -156,11 +164,12 @@ const Background3D: React.FC = () => {
   return (
     <div className="fixed inset-0 z-0 bg-transparent pointer-events-none transition-colors duration-[3000ms]">
       {!prefersReducedMotion && (
-        <Canvas
-          camera={{ position: [0, 2, 12], fov: 55 }}
-          dpr={[1, isMobile ? 1.5 : 2]}
-          gl={{ antialias: false, alpha: true }}
-        >
+        <React.Suspense fallback={null}>
+          <Canvas
+            camera={{ position: [0, 2, 12], fov: 55 }}
+            dpr={[1, isMobile ? 1.2 : 2]}
+            gl={{ antialias: false, alpha: true, powerPreference: 'high-performance' }}
+          >
           <ambientLight intensity={0.3} color="#FCFBF8" />
           <directionalLight position={[10, 10, 5]} intensity={0.6} color="#FFF5E1" />
           <directionalLight position={[-10, -5, 5]} intensity={0.4} color="#C5A55A" />
@@ -168,7 +177,8 @@ const Background3D: React.FC = () => {
           
           <ParametricFabric isEvening={isEvening} isMobile={isMobile} />
           <AccentLights />
-        </Canvas>
+          </Canvas>
+        </React.Suspense>
       )}
       
       {/* Light Theme Vignettes */}

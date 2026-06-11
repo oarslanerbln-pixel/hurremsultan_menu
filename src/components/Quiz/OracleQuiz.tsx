@@ -10,6 +10,7 @@ const triggerSound = (type: 'tick' | 'chime' | 'sweep' | 'ethereal') => {
   const isEnabled = window.localStorage.getItem('huerrem_sound_enabled') !== 'false';
   if (!isEnabled) return;
   try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const AC = window.AudioContext || (window as any).webkitAudioContext;
     const ctx = new AC();
     const now = ctx.currentTime;
@@ -259,6 +260,7 @@ const OracleQuiz: React.FC = () => {
 
               <button
                 onClick={handleClose}
+                aria-label="Close"
                 className="absolute top-5 right-5 z-30 p-2 rounded-full text-gold-500/50 hover:text-gold-300 hover:bg-gold-500/10 transition-all"
               >
                 <X className="w-6 h-6" />

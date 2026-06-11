@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { Heart, Box, X, Sparkles, Plus } from 'lucide-react';
 import { type MenuItem } from '../../data/menu';
@@ -7,6 +8,8 @@ import { useCart } from '../../context/CartContext';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { translations } from '../../i18n/translations';
 import { useConcept } from '../../context/ConceptContext';
+import { getAssetUrl } from '../../utils/paths';
+import { worldCupFlags } from '../../data/worldCupData';
 import ARViewerModal from './ARViewerModal';
 import IceShatterEffect from './IceShatterEffect';
 import { useDeviceOrientation } from '../../hooks/useDeviceOrientation';
@@ -64,6 +67,16 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
       ty: 80 + Math.random() * 60,
       delay: Math.random() * 4,
       duration: 3 + Math.random() * 2
+    }));
+  });
+
+  // Initialize random particle values for the modal
+  const [modalParticlesConfig] = React.useState(() => {
+    return [...Array(12)].map(() => ({
+      x: (Math.random() - 0.5) * 250, 
+      y: (Math.random() - 0.5) * 250 - 50,
+      delay: Math.random() * 2,
+      duration: 2 + Math.random() * 2
     }));
   });
 
@@ -153,7 +166,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
           )}
           
           <motion.img 
-            src={item.imageUrl} 
+            src={getAssetUrl(item.imageUrl)} 
             alt={itemName} 
             className="relative w-full h-full object-cover object-[center_30%] transition-transform duration-[800ms] ease-out group-hover:scale-105 drop-shadow-[0_0_15px_rgba(218,165,32,0.3)] brightness-90 contrast-[1.15] saturate-[1.1]" 
             loading="lazy"
@@ -200,8 +213,17 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
               {typeof item.badge === 'string' ? item.badge : item.badge[lang]}
             </span>
           )}
-          <h3 className="theme-card-title">
+          <h3 className="theme-card-title flex items-center gap-3 flex-wrap">
             {itemName}
+            {concept === 'world-cup' && worldCupFlags[item.id] && (
+              <img 
+                src={`https://flagcdn.com/w40/${worldCupFlags[item.id]}.png`}
+                srcSet={`https://flagcdn.com/w80/${worldCupFlags[item.id]}.png 2x`}
+                alt={`${worldCupFlags[item.id]} flag`}
+                className="h-5 w-auto rounded-[2px] shadow-[0_0_10px_rgba(255,255,255,0.4)] animate-pulse" 
+                title="World Cup Edition"
+              />
+            )}
           </h3>
         </div>
 
@@ -324,19 +346,20 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
       )}
     </motion.article>
 
-    {item.arModelUrl && (
+    {item.arModelUrl && createPortal(
       <ARViewerModal 
         isOpen={isAROpen}
         onClose={() => setIsAROpen(false)}
         modelUrl={item.arModelUrl}
         iosModelUrl={item.arIosModelUrl}
         title={itemName}
-      />
+      />,
+      document.body
     )}
 
     {/* Rich Item Detail Modal */}
-    {/* Rich Item Detail Modal */}
-    <AnimatePresence>
+    {createPortal(
+      <AnimatePresence>
       {isExpanded && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -380,21 +403,47 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
             {item.imageUrl && (
               <motion.div 
                 layoutId={`image-container-${item.id}`}
-                className="relative w-56 h-56 sm:w-64 sm:h-64 flex items-center justify-center overflow-visible z-50 pointer-events-none"
+                className="relative w-72 h-72 sm:w-80 sm:h-80 flex items-center justify-center overflow-visible z-50 pointer-events-none"
               >
                 {/* Aura for Special Drinks */}
                 {isSignature && <IceShatterEffect />}
 
+                {/* Flying Particles over the Image */}
+                <div className="absolute inset-0 z-20 pointer-events-none">
+                  {modalParticlesConfig.map((config, i) => (
+                    <motion.div
+                      key={`modal-particle-${i}`}
+                      className="absolute left-1/2 top-1/2 w-1.5 h-1.5 rounded-full bg-gold-400 blur-[1px]"
+                      initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
+                      animate={{ 
+                        opacity: [0, 0.8, 0], 
+                        scale: [0, 1.5, 0], 
+                        x: config.x, 
+                        y: config.y
+                      }}
+                      transition={{ 
+                        duration: config.duration, 
+                        repeat: Infinity, 
+                        delay: config.delay,
+                        ease: "easeOut"
+                      }}
+                    />
+                  ))}
+                </div>
+
                 <motion.img 
-                  src={item.imageUrl} 
+                  src={getAssetUrl(item.imageUrl)} 
                   alt={itemName} 
-                  className={`relative z-10 w-full h-full object-contain mix-blend-multiply ${isSignature ? 'scale-[1.4]' : 'scale-[1.2]'}`} 
-                  animate={isSignature ? { 
-                    y: [-15, 15, -15]
-                  } : {}}
-                  transition={isSignature ? { 
-                    y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
-                  } : {}}
+                  className={`relative z-10 w-full h-full object-contain mix-blend-multiply ${isSignature ? 'scale-[1.4]' : 'scale-[1.3]'}`} 
+                  animate={{ 
+                    y: [-15, 15, -15],
+                    rotateZ: [-2, 2, -2]
+                  }}
+                  transition={{ 
+                    duration: 7, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
                   style={{
                     WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 75%)',
                     maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 75%)'
@@ -411,8 +460,16 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
               className={`w-full theme-modal p-6 relative z-40 ${item.imageUrl ? "pt-20 mt-[-3rem]" : "pt-8 mt-4"} max-h-[55vh] sm:max-h-[60vh] overflow-y-auto overflow-x-hidden no-scrollbar`}
             >
               <div className="flex justify-between items-start gap-4 mb-4">
-                <h2 className="font-display text-2xl uppercase tracking-widest theme-text leading-tight">
+                <h2 className="font-display text-2xl uppercase tracking-widest theme-text leading-tight flex items-center gap-3 flex-wrap">
                   {itemName}
+                  {concept === 'world-cup' && worldCupFlags[item.id] && (
+                    <img 
+                      src={`https://flagcdn.com/w80/${worldCupFlags[item.id]}.png`}
+                      alt={`${worldCupFlags[item.id]} flag`}
+                      className="h-7 w-auto rounded-[2px] shadow-[0_0_15px_rgba(255,255,255,0.6)] animate-pulse" 
+                      title="World Cup Edition"
+                    />
+                  )}
                 </h2>
                 <span className="text-gold-700 font-display text-xl tracking-wider shrink-0 bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/20">
                   {item.price.toFixed(2)}€
@@ -472,7 +529,9 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+    )}
     </>
   );
 };

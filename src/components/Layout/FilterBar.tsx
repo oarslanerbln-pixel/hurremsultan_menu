@@ -28,7 +28,7 @@ export default function FilterBar({ isCompact }: FilterBarProps) {
   const handleSubcategoryClick = (sub: string) => {
     setSubcategory(sub);
     playSound('tick');
-    if (navigator.vibrate) navigator.vibrate(10);
+    if (navigator.vibrate) navigator.vibrate([30, 20]); // Stronger haptic vibration
   };
 
   return (

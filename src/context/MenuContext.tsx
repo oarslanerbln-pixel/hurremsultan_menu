@@ -83,7 +83,10 @@ export function MenuProvider({ children }: { children: ReactNode }) {
 
   const subcategories = useMemo(() => {
     return ['All', ...Array.from(new Set(
-      allItems.filter(item => item.category === activeCategory).map(item => item.subcategory)
+      allItems
+        .filter(item => item.category === activeCategory)
+        .map(item => item.subcategory)
+        .filter((sub): sub is string => Boolean(sub))
     ))];
   }, [allItems, activeCategory]);
 

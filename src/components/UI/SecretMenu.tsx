@@ -42,6 +42,7 @@ const SecretMenu: React.FC<SecretMenuProps> = ({ isOpen, onClose }) => {
     { id: 'cyber-gold', label: 'Cyber-Gold' },
     { id: 'ottoman-palace', label: 'Ottoman Palace (Royal)' },
     { id: 'monolithic-matte', label: 'Monolithic Matte (Old Money)' },
+    { id: 'world-cup', label: 'World Cup VIP Mode' },
   ];
 
   const [pin, setPin] = useState('');

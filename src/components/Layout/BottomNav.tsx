@@ -41,7 +41,7 @@ export default function BottomNav({ isCompact }: BottomNavProps) {
   const handleCategoryClick = (category: MenuCategory) => {
     setCategory(category);
     playSound('sweep');
-    if (navigator.vibrate) navigator.vibrate([10, 15]);
+    if (navigator.vibrate) navigator.vibrate([50, 30, 50]); // Stronger haptic vibration
   };
 
   return (
@@ -61,17 +61,17 @@ export default function BottomNav({ isCompact }: BottomNavProps) {
               {isActive && (
                 <motion.div
                   layoutId="nav-category-glow"
-                  className={`absolute inset-0 m-auto w-12 h-12 rounded-full ${getNavGlow(cat.key)} blur-md pointer-events-none z-0`}
+                  className={`absolute inset-0 m-auto w-12 h-12 rounded-full ${getNavGlow(cat.key)} blur-md pointer-events-none z-0 opacity-80`}
                 />
               )}
-              {/* Icon with float animation when active */}
+              {/* Icon with float animation and neon glow when active */}
               <div className={isActive ? 'animate-icon-float' : ''}>
                 <IconComponent className={`w-5 h-5 transition-all duration-300 relative z-10 ${
-                  isActive ? 'text-gold-600 scale-110 drop-shadow-sm' : 'text-text-tertiary/60 hover:text-gold-500/80'
+                  isActive ? 'text-gold-400 scale-125 drop-shadow-[0_0_12px_rgba(255,215,0,0.9)]' : 'text-text-tertiary/60 hover:text-gold-500/80'
                 }`} />
               </div>
               <span className={`text-[8px] font-body tracking-[0.15em] uppercase relative z-10 transition-all duration-300 ${
-                isActive ? 'text-gold-700 font-bold' : 'text-text-tertiary/60'
+                isActive ? 'text-gold-400 font-bold drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]' : 'text-text-tertiary/60'
               }`}>
                 {t(cat.labelKey)}
               </span>
@@ -79,7 +79,7 @@ export default function BottomNav({ isCompact }: BottomNavProps) {
               {isActive && (
                 <motion.div
                   layoutId="active-dock-indicator"
-                  className={`absolute top-0 left-1/2 -translate-x-1/2 w-12 h-[2px] rounded-b-full ${getNavIndicator(cat.key)}`}
+                  className={`absolute top-0 left-1/2 -translate-x-1/2 w-12 h-[2px] rounded-b-full ${getNavIndicator(cat.key)} shadow-[0_0_10px_rgba(255,215,0,0.6)]`}
                   transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                 />
               )}

@@ -34,7 +34,7 @@ export const translations = {
 
     // Info dialog
     infoTitle: 'Hürrem Sultan Premium Lounge · Berlin',
-    infoBody: 'Rezervasyon ve VIP Masa Hattı: +49 30 2234567\nAdres: Kurfürstendamm, Berlin',
+    infoBody: 'Rezervasyon ve VIP Masa Hattı: +49 30 546 159 59\nAdres: Oranienstraße 52-53, 10969 Berlin',
 
     // Quiz
     quizLabel: 'USTURLAP · SORU',
@@ -158,7 +158,7 @@ export const translations = {
     emptyState: 'No items in this category yet.',
 
     infoTitle: 'Hürrem Sultan Premium Lounge · Berlin',
-    infoBody: 'Reservations & VIP Table Line: +49 30 2234567\nAddress: Kurfürstendamm, Berlin',
+    infoBody: 'Reservations & VIP Table Line: +49 30 546 159 59\nAddress: Oranienstraße 52-53, 10969 Berlin',
 
     quizLabel: 'ASTROLABE · QUESTION',
     quizTitle: "Sultan's Taste Discovery",
@@ -276,7 +276,7 @@ export const translations = {
     emptyState: 'Noch keine Artikel in dieser Kategorie.',
 
     infoTitle: 'Hürrem Sultan Premium Lounge · Berlin',
-    infoBody: 'Reservierungen & VIP-Tischlinie: +49 30 2234567\nAdresse: Kurfürstendamm, Berlin',
+    infoBody: 'Reservierungen & VIP-Tischlinie: +49 30 546 159 59\nAdresse: Oranienstraße 52-53, 10969 Berlin',
 
     quizLabel: 'ASTROLAB · FRAGE',
     quizTitle: 'Sultans Geschmacksentdeckung',
@@ -388,7 +388,7 @@ export const translations = {
     wishlistEmpty: 'No se han seleccionado artículos aún',
     emptyState: 'No hay artículos en esta categoría aún.',
     infoTitle: 'Hürrem Sultan Premium Lounge · Berlín',
-    infoBody: 'Línea de Reservas y Mesa VIP: +49 30 2234567\nDirección: Kurfürstendamm, Berlín',
+    infoBody: 'Línea de Reservas y Mesa VIP: +49 30 546 159 59\nDirección: Kurfürstendamm, Berlín',
     quizLabel: 'ASTROLABIO · PREGUNTA',
     quizTitle: "Descubrimiento de Sabor del Sultán",
     quizSubtitle: 'La rueda del astrolabio ha girado y seleccionado esta combinación especial para ti:',
@@ -490,7 +490,7 @@ export const translations = {
     wishlistEmpty: 'Aucun article sélectionné pour le moment',
     emptyState: 'Aucun article dans cette catégorie pour le moment.',
     infoTitle: 'Hürrem Sultan Premium Lounge · Berlin',
-    infoBody: 'Réservations et ligne Table VIP : +49 30 2234567\nAdresse : Kurfürstendamm, Berlin',
+    infoBody: 'Réservations et ligne Table VIP : +49 30 546 159 59\nAdresse : Oranienstraße 52-53, 10969 Berlin',
     quizLabel: 'ASTROLABE · QUESTION',
     quizTitle: "Découverte des Saveurs du Sultan",
     quizSubtitle: 'La roue de l\'astrolabe a tourné et a sélectionné cette combinaison spéciale pour vous :',
@@ -592,7 +592,7 @@ export const translations = {
     wishlistEmpty: 'Пока ничего не выбрано',
     emptyState: 'В этой категории пока нет позиций.',
     infoTitle: 'Hürrem Sultan Premium Lounge · Берлин',
-    infoBody: 'Бронирование и VIP-столы: +49 30 2234567\nАдрес: Курфюрстендамм, Берлин',
+    infoBody: 'Бронирование и VIP-столы: +49 30 546 159 59\nАдрес: Курфюрстендамм, Берлин',
     quizLabel: 'АСТРОЛЯБИЯ · ВОПРОС',
     quizTitle: "Открытие вкуса Султана",
     quizSubtitle: 'Колесо астролябии повернулось и выбрало для вас эту особую комбинацию:',

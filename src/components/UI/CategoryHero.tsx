@@ -51,6 +51,14 @@ const HERO_DATA: Record<MenuCategory, {
   },
 };
 
+// Placeholder videos for each category to be later replaced by Veo videos
+const CATEGORY_VIDEOS: Record<string, string> = {
+  shisha: 'https://cdn.pixabay.com/video/2020/05/24/40059-425121654_large.mp4', // Smoke
+  drinks: 'https://cdn.pixabay.com/video/2021/08/11/84687-586745199_large.mp4', // Drinks/Liquid
+  food: 'https://cdn.pixabay.com/video/2022/01/24/105741-671239855_large.mp4', // Fire/Cooking
+  kombis: 'https://cdn.pixabay.com/video/2020/06/03/40960-427909376_large.mp4', // Gold particles
+};
+
 const CategoryHero: React.FC<CategoryHeroProps> = ({ category }) => {
   const { t } = useLanguage();
   const data = HERO_DATA[category];
@@ -65,8 +73,20 @@ const CategoryHero: React.FC<CategoryHeroProps> = ({ category }) => {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={`relative overflow-hidden rounded-2xl mx-0 mb-5 ${data.gradientClass}`}
     >
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0 opacity-[0.15] mix-blend-screen pointer-events-none">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="w-full h-full object-cover"
+          src={CATEGORY_VIDEOS[category] || CATEGORY_VIDEOS.drinks}
+        />
+      </div>
+
       {/* Background ambient glow */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
+      <div className="absolute inset-0 opacity-20 pointer-events-none z-0">
         <div className="absolute w-[60%] h-[60%] right-[-10%] top-[-10%] rounded-full bg-white/10 blur-[60px]" />
       </div>
 

@@ -32,6 +32,16 @@ export default function MainContent() {
           </motion.div>
         </AnimatePresence>
       </div>
+
+      {/* Branding Footer */}
+      <div className="w-full flex flex-col items-center justify-center py-12 pb-32 opacity-60">
+        <span className="text-[10px] font-display uppercase tracking-[0.3em] text-gold-600 mb-1">
+          Crafted by
+        </span>
+        <span className="text-[12px] font-display font-bold tracking-[0.4em] text-white/80 drop-shadow-[0_0_8px_rgba(197,165,90,0.5)]">
+          1618_DIGITAL
+        </span>
+      </div>
     </main>
   );
 }

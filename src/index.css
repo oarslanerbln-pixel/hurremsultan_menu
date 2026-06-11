@@ -186,6 +186,21 @@
   --theme-card-padding: 20px;
 }
 
+/* 8. WORLD CUP VIP MODE */
+[data-concept="world-cup"] {
+  --theme-bg: #0A1A12;
+  --theme-card-bg: rgba(10, 30, 20, 0.85);
+  --theme-card-border: rgba(16, 185, 129, 0.3);
+  --theme-text-primary: #F0FDF4;
+  --theme-text-secondary: #A7F3D0;
+  --theme-accent: #10B981;
+  --theme-radius: 16px;
+  --theme-shadow: 0 8px 30px rgba(16, 185, 129, 0.15);
+  --theme-modal-bg: rgba(10, 26, 18, 0.95);
+  --theme-modal-text: #F0FDF4;
+  --theme-card-padding: 16px;
+}
+
 /* Global Theme Classes */
 body {
   background-color: var(--theme-bg) !important;

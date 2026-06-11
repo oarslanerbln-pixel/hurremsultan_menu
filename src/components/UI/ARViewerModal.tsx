@@ -10,10 +10,8 @@ interface ARViewerModalProps {
   title: string;
 }
 
-import { useMemo } from 'react';
-
-const Particles = () => {
-  const particles = useMemo(() => {
+import { useState } from 'react';const Particles = () => {
+  const [particles] = useState(() => {
     return [...Array(15)].map((_, i) => ({
       id: i,
       width: Math.random() * 4 + 2 + 'px',
@@ -25,7 +23,7 @@ const Particles = () => {
       duration: Math.random() * 3 + 3,
       delay: Math.random() * 2,
     }));
-  }, []);
+  });
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
