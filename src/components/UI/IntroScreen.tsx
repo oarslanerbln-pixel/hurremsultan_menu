@@ -51,15 +51,15 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ isVisible }) => {
               transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col items-center justify-center will-change-[opacity,transform,filter] w-full px-4"
             >
-              <h1 className="font-display font-light text-[2.5rem] leading-none sm:text-6xl md:text-7xl uppercase text-white text-center tracking-[0.1em] sm:tracking-[0.3em] drop-shadow-[0_0_20px_rgba(218,165,32,0.6)] whitespace-nowrap">
+              <h1 className="font-display font-light text-4xl leading-tight sm:text-6xl md:text-7xl uppercase text-white text-center tracking-[0.1em] sm:tracking-[0.3em] drop-shadow-[0_0_20px_rgba(218,165,32,0.6)] px-2">
                 Hürrem Sultan
               </h1>
               
               <motion.h2
-                initial={{ opacity: 0, y: 15, letterSpacing: '0em' }}
+                initial={{ opacity: 0, y: 15, letterSpacing: '0.1em' }}
                 animate={phase >= 2 ? { opacity: 0.9, y: 0, letterSpacing: '0.4em' } : {}}
                 transition={{ duration: 2.0, delay: 0.8, ease: "easeOut" }}
-                className="font-body font-light text-[9px] sm:text-sm uppercase text-gold-300 text-center sm:tracking-[0.8em] mt-4 sm:mt-6 whitespace-nowrap"
+                className="font-body font-light text-[10px] sm:text-sm uppercase text-gold-300 text-center mt-4 sm:mt-6 px-4"
               >
                 Premium Lounge
               </motion.h2>

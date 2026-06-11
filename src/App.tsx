@@ -56,7 +56,7 @@ function AppInner() {
   return (
     <WishlistProvider>
       <CartProvider>
-        <div className="min-h-screen pb-44 relative bg-transparent selection:bg-gold-500/30 selection:text-gold-900">
+        <div className="min-h-screen overflow-x-hidden pb-44 relative bg-transparent selection:bg-gold-500/30 selection:text-gold-900">
           <AmbientBackground />
           <IntroScreen isVisible={showIntro} />
           <Suspense fallback={null}>

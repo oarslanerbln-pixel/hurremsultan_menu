@@ -434,7 +434,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
                 <motion.img 
                   src={getAssetUrl(item.imageUrl)} 
                   alt={itemName} 
-                  className={`relative z-10 w-full h-full object-contain mix-blend-multiply ${isSignature ? 'scale-[1.4]' : 'scale-[1.3]'}`} 
+                  className={`relative z-10 w-full h-full object-contain mix-blend-multiply ${isSignature ? 'scale-[1.15]' : 'scale-[1.1]'}`} 
                   animate={{ 
                     y: [-15, 15, -15],
                     rotateZ: [-2, 2, -2]
@@ -454,10 +454,10 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
 
             {/* Glassmorphism Content Area - Apple Vision Pro Style */}
             <motion.div 
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className={`w-full theme-modal p-6 relative z-40 ${item.imageUrl ? "pt-20 mt-[-3rem]" : "pt-8 mt-4"} max-h-[55vh] sm:max-h-[60vh] overflow-y-auto overflow-x-hidden no-scrollbar`}
+              className={`w-full theme-modal p-6 relative z-40 ${item.imageUrl ? "pt-12 mt-[-1.5rem]" : "pt-8 mt-4"} max-h-[55vh] sm:max-h-[60vh] overflow-y-auto overflow-x-hidden no-scrollbar`}
             >
               <div className="flex justify-between items-start gap-4 mb-4">
                 <h2 className="font-display text-2xl uppercase tracking-widest theme-text leading-tight flex items-center gap-3 flex-wrap">
