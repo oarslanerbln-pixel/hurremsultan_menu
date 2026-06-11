@@ -49,7 +49,7 @@ export default function TopActionBar({ onOpenMixology }: TopActionBarProps) {
         aria-label="The Alchemist"
       >
         <div className="absolute inset-0 rounded-full bg-gold-400/20 animate-pulse pointer-events-none" />
-        <FlaskConical className="w-4 h-4" />
+        <FlaskConical className="w-5 h-5 animate-neon-pulse-slow text-gold-400" />
       </button>
 
       <button
