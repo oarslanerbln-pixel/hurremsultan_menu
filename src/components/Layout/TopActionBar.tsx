@@ -16,7 +16,7 @@ const playSound = (_type: 'tick' | 'sweep') => {
 export default function TopActionBar({ onOpenMixology }: TopActionBarProps) {
   const { t, lang, setLang } = useLanguage();
   const { totalItems, setIsCartOpen } = useCart();
-  const langs = ['DE', 'TR', 'EN', 'ES', 'FR', 'RU'] as const;
+  const langs = ['DE', 'TR', 'EN', 'FR', 'RU', 'ES'] as const;
 
   const handleInfoClick = () => {
     playSound('tick');
