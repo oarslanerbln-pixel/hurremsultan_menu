@@ -61,7 +61,7 @@ export default function AllergenLegend({ isOpen, onClose }: AllergenLegendProps)
                       <span className="font-display font-bold text-xs bg-white/5 border border-white/10 text-gold-300 w-6 h-6 flex items-center justify-center rounded shrink-0">
                         {code}
                       </span>
-                      <span className="font-body text-sm text-gray-300 pt-0.5">{desc}</span>
+                      <span className="font-body text-sm theme-text-muted pt-0.5">{desc}</span>
                     </div>
                   ))}
                 </div>
@@ -78,14 +78,14 @@ export default function AllergenLegend({ isOpen, onClose }: AllergenLegendProps)
                       <span className="font-display font-bold text-xs bg-white/5 border border-white/10 text-gold-300 min-w-[1.5rem] px-1 h-6 flex items-center justify-center rounded shrink-0">
                         {code}
                       </span>
-                      <span className="font-body text-sm text-gray-300 pt-0.5">{desc}</span>
+                      <span className="font-body text-sm theme-text-muted pt-0.5">{desc}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
             
-            <p className="mt-6 text-[10px] text-gray-500 font-body text-center leading-relaxed">
+            <p className="mt-6 text-[10px] theme-text-muted font-body text-center leading-relaxed">
               *Trotz sorgfältiger Herstellung können neben den gekennzeichneten Zutaten Spuren anderer Stoffe enthalten sein, die im Produktionsprozess in der Küche verwendet werden.
             </p>
           </motion.div>

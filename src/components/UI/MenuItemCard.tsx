@@ -292,12 +292,12 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
         {(item.allergens?.length || item.additives?.length) ? (
           <div className="flex flex-wrap gap-1 mt-2">
             {item.allergens?.map(a => (
-              <span key={a} className="font-display text-[9px] text-gray-400 border border-gray-600/50 rounded px-1 min-w-[1rem] text-center" title="Allergen">
+              <span key={a} className="font-display text-[9px] theme-text-muted border theme-border rounded px-1 min-w-[1rem] text-center" title="Allergen">
                 {a}
               </span>
             ))}
             {item.additives?.map(a => (
-              <span key={a} className="font-display text-[9px] text-gray-400 border border-gray-600/50 rounded px-1 min-w-[1rem] text-center" title="Zusatzstoff">
+              <span key={a} className="font-display text-[9px] theme-text-muted border theme-border rounded px-1 min-w-[1rem] text-center" title="Zusatzstoff">
                 {a}
               </span>
             ))}
@@ -498,12 +498,12 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
               {(item.allergens?.length || item.additives?.length) ? (
                 <div className="flex flex-wrap gap-1.5 mb-6">
                   {item.allergens?.map(a => (
-                    <span key={a} className="font-display font-bold text-[10px] text-gray-400 border border-gray-600/50 rounded-md px-1.5 min-w-[1.25rem] h-5 flex items-center justify-center" title="Allergen">
+                    <span key={a} className="font-display font-bold text-[10px] theme-text-muted border theme-border rounded-md px-1.5 min-w-[1.25rem] h-5 flex items-center justify-center" title="Allergen">
                       {a}
                     </span>
                   ))}
                   {item.additives?.map(a => (
-                    <span key={a} className="font-display font-bold text-[10px] text-gray-400 border border-gray-600/50 rounded-md px-1.5 min-w-[1.25rem] h-5 flex items-center justify-center" title="Zusatzstoff">
+                    <span key={a} className="font-display font-bold text-[10px] theme-text-muted border theme-border rounded-md px-1.5 min-w-[1.25rem] h-5 flex items-center justify-center" title="Zusatzstoff">
                       {a}
                     </span>
                   ))}
@@ -520,7 +520,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
                   
                   {Object.entries(item.flavorProfile).map(([key, value]) => (
                     <div key={key} className="flex items-center gap-3">
-                      <span className="font-body text-[10px] uppercase tracking-wider text-gray-500 w-20 text-right font-medium">
+                      <span className="font-body text-[10px] uppercase tracking-wider theme-text-muted w-20 text-right font-medium">
                         {key}
                       </span>
                       <div className="flex-1 h-1.5 bg-black/10 rounded-full overflow-hidden">

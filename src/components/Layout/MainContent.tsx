@@ -72,7 +72,7 @@ export default function MainContent() {
           className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
         >
           <Info className="w-4 h-4 text-gold-400" />
-          <span className="font-display text-xs tracking-widest uppercase text-gray-300">
+          <span className="font-display text-xs tracking-widest uppercase theme-text-muted">
             {t('allergensTitle') || 'Allergene & Zusatzstoffe'}
           </span>
         </button>

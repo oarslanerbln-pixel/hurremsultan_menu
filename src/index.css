@@ -154,6 +154,11 @@
   --theme-modal-bg: rgba(245, 243, 237, 0.95);
   --theme-modal-text: #1A2F3D;
   --theme-card-padding: 16px;
+
+  /* Overrides for utility classes */
+  --text-primary: #1A2F3D;
+  --text-secondary: #425F75;
+  --text-tertiary: #607D8B;
 }
 
 /* 6. MONOLITHIC MATTE */
