@@ -10,6 +10,8 @@ export interface MenuItem {
   isSignature?: boolean;
   imageUrl?: string;
   tags?: string[]; // For quiz matching
+  allergens?: string[];
+  additives?: string[];
   includes?: string[]; // For combinations
   badge?: string | Record<string, string>; // Small badge (e.g. "BELIEBT", "TOP DEAL")
   intensity?: 1 | 2 | 3 | 4 | 5; // Strength/intensity rating for Shishas (1 = Hafif, 5 = Çok Ağır)
@@ -974,129 +976,320 @@ export const menuData: MenuItem[] = [
     tags: ['fruity', 'creamy', 'sweet']
   },
 
+  
   // --- Food / Yemekler ---
+  // Burger Gerichte
   {
-    id: 'f1',
-    name: { DE: 'Hummus', EN: 'Hummus', TR: 'Hummus' },
-    price: 6.90,
-    description: { DE: 'Cremiger Kichererbsen-Dip mit Olivenöl und Paprika.', EN: 'Cremiger Kichererbsen-Dip mit Olivenöl und Paprika.', TR: 'Cremiger Kichererbsen-Dip mit Olivenöl und Paprika.' },
-    imageUrl: '/images/menury_originals/vorspeisen__hummus.webp',
-    category: 'food',
-    subcategory: 'Vorspeisen',
-    tags: ['classic', 'creamy']
-  },
-  {
-    id: 'f2',
-    name: { DE: 'Sigara Böreği', EN: 'Sigara Böreği', TR: 'Sigara Böreği' },
-    price: 7.50,
-    description: { DE: 'Knusprige Yufka-Röllchen gefüllt mit Schafskäse und Petersilie.', EN: 'Knusprige Yufka-Röllchen gefüllt mit Schafskäse und Petersilie.', TR: 'Knusprige Yufka-Röllchen gefüllt mit Schafskäse und Petersilie.' },
-    imageUrl: '',
-    category: 'food',
-    subcategory: 'Vorspeisen',
-    tags: ['classic', 'crispy']
-  },
-  {
-    id: 'f3',
-    name: { DE: 'Mercimek Çorbası', EN: 'Mercimek Çorbası', TR: 'Mercimek Çorbası' },
-    price: 5.90,
-    description: { DE: 'Türkische rote Linsensuppe mit Zitrone und Minze.', EN: 'Türkische rote Linsensuppe mit Zitrone und Minze.', TR: 'Türkische rote Linsensuppe mit Zitrone und Minze.' },
-    imageUrl: '',
-    category: 'food',
-    subcategory: 'Vorspeisen',
-    tags: ['classic']
-  },
-  {
-    id: 'f4',
-    name: { DE: 'Falafel Teller', EN: 'Falafel Teller', TR: 'Falafel Teller' },
-    price: 8.90,
-    description: { DE: 'Knusprige Kichererbsen-Bällchen mit Tahin-Sauce und Salat.', EN: 'Knusprige Kichererbsen-Bällchen mit Tahin-Sauce und Salat.', TR: 'Knusprige Kichererbsen-Bällchen mit Tahin-Sauce und Salat.' },
-    imageUrl: '/images/food/falafel_teller.png',
-    category: 'food',
-    subcategory: 'Vorspeisen',
-    tags: ['crispy']
-  },
-  {
-    id: 'f5',
-    name: { DE: 'Adana Kebab', EN: 'Adana Kebab', TR: 'Adana Kebab' },
+    id: 'f_burger_1',
+    name: { DE: 'Truffle Blue Burger', EN: 'Truffle Blue Burger', TR: 'Truffle Blue Burger' },
     price: 14.90,
-    description: { DE: 'Würziger Hackfleischspieß vom Grill mit Reis und Salat.', EN: 'Würziger Hackfleischspieß vom Grill mit Reis und Salat.', TR: 'Würziger Hackfleischspieß vom Grill mit Reis und Salat.' },
-    imageUrl: '/images/food/adana_kebab.png',
+    description: { DE: 'Rindfleisch-Patty, überbacken mit Gorgonzola, kombiniert mit Blattsalat, Zwiebeln und Trüffel-Mayonnaise. Serviert mit Süßkartoffel-Pommes.\nExtra Beef Patty: +3,00 €', EN: 'Beef patty, baked with Gorgonzola, combined with lettuce, onions and truffle mayonnaise. Served with sweet potato fries.\nExtra Beef Patty: +3,00 €', TR: 'Gorgonzola ile fırınlanmış dana köftesi, marul, soğan ve trüf mayonezi ile. Tatlı patates kızartması ile servis edilir.\nEkstra Dana Köftesi: +3,00 €' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Burger Gerichte',
+    tags: ['meat', 'intense', 'premium']
+  },
+  {
+    id: 'f_burger_2',
+    name: { DE: 'Crispy Chicken Delight', EN: 'Crispy Chicken Delight', TR: 'Crispy Chicken Delight' },
+    price: 13.50,
+    description: { DE: 'Knuspriges Hähnchenfilet, belegt mit Blattsalat, Strauchtomaten, Gewürzgurken und unserer speziellen Burger-Sauce. Serviert mit Pommes.\nExtra Chicken Patty: +3,00 €', EN: 'Crispy chicken fillet, topped with lettuce, vine tomatoes, pickles and our special burger sauce. Served with fries.\nExtra Chicken Patty: +3,00 €', TR: 'Marul, salkım domates, kornişon turşu ve özel burger sosumuzla hazırlanan çıtır tavuk fileto. Patates kızartması ile servis edilir.\nEkstra Tavuk Köftesi: +3,00 €' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Burger Gerichte',
+    tags: ['meat', 'crispy']
+  },
+  {
+    id: 'f_burger_3',
+    name: { DE: 'Classic Cheeseburger', EN: 'Classic Cheeseburger', TR: 'Classic Cheeseburger' },
+    price: 13.90,
+    description: { DE: 'Ein saftiges Rindfleisch-Patty mit Chesterkäse, Blattsalat, Tomaten, Zwiebeln und Gewürzgurken, abgerundet mit unserer Burger-Sauce. Serviert mit Pommes.\nExtra Beef Patty: +3,00 €', EN: 'A juicy beef patty with Chester cheese, lettuce, tomatoes, onions and pickles, rounded off with our burger sauce. Served with fries.\nExtra Beef Patty: +3,00 €', TR: 'Chester peyniri, marul, domates, soğan, kornişon turşu ve özel burger sosumuzla taçlandırılmış sulu dana köftesi. Patates kızartması ile servis edilir.\nEkstra Dana Köftesi: +3,00 €' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Burger Gerichte',
+    tags: ['meat', 'classic']
+  },
+  {
+    id: 'f_burger_4',
+    name: { DE: 'Veggie Grill Burger', EN: 'Veggie Grill Burger', TR: 'Veggie Grill Burger' },
+    price: 13.50,
+    description: { DE: 'Hausgemachter Gemüse-Patty, saisonales Grillgemüse, Blattsalat, Avocado-Creme, Tomaten und Gewürzgurken. Serviert mit Pommes.', EN: 'Homemade vegetable patty, seasonal grilled vegetables, lettuce, avocado cream, tomatoes and pickles. Served with fries.', TR: 'Ev yapımı sebze köftesi, mevsimlik ızgara sebzeler, marul, avokado kreması, domates ve kornişon turşu. Patates kızartması ile servis edilir.' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Burger Gerichte',
+    tags: ['vegetarian']
+  },
+
+  // Hauptgerichte
+  {
+    id: 'f_haupt_1',
+    name: { DE: 'Mexican Style Fajitas', EN: 'Mexican Style Fajitas', TR: 'Mexican Style Fajitas' },
+    price: 16.90,
+    description: { DE: 'Würzige Hähnchenbruststreifen, angebraten mit Paprika-Mix, Zwiebeln und Mais. Serviert mit Tortilla-Brot und drei Dips: Hummus, Sour Cream und Guacamole.\nOptional mit Argentinischem Rinderfilet (20,90 €)', EN: 'Spicy chicken breast strips, fried with mixed peppers, onions and corn. Served with tortilla bread and three dips: hummus, sour cream and guacamole.\nOptional with Argentine beef fillet (€20.90)', TR: 'Biber karışımı, soğan ve mısırla sotelenmiş baharatlı tavuk göğsü şeritleri. Tortilla ekmeği ve üç sos ile servis edilir: Humus, ekşi krema ve guacamole.\nİsteğe bağlı Arjantin dana bonfile ile (20,90 €)' },
+    imageUrl: '',
     category: 'food',
     subcategory: 'Hauptgerichte',
-    isSignature: true,
-    tags: ['meat', 'intense'],
-    arModelUrl: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb', // Using valid external model for demo
-    arIosModelUrl: 'https://modelviewer.dev/shared-assets/models/Astronaut.usdz',
+    tags: ['meat', 'spicy']
   },
   {
-    id: 'f6',
-    name: { DE: 'Chicken Wings', EN: 'Chicken Wings', TR: 'Chicken Wings' },
-    price: 11.90,
-    description: { DE: 'Knusprige Chicken Wings mit BBQ-Sauce und Cole Slaw.', EN: 'Knusprige Chicken Wings mit BBQ-Sauce und Cole Slaw.', TR: 'Knusprige Chicken Wings mit BBQ-Sauce und Cole Slaw.' },
-    imageUrl: '/images/food/chicken_wings.png',
+    id: 'f_haupt_2',
+    name: { DE: 'Grillspieß Oriental', EN: 'Grillspieß Oriental', TR: 'Grillspieß Oriental' },
+    price: 16.90,
+    description: { DE: 'Saftig marinierter Hähnchenspieß, auf dem Lavagrill perfekt gegart. Serviert mit Basmati-Reis, gegrillter Paprika, Tomate und frischem Beilagensalat.\nMit Rosmarin Kartoffeln: 18,90 €', EN: 'Juicy marinated chicken skewer, cooked to perfection on the lava grill. Served with basmati rice, grilled peppers, tomatoes and a fresh side salad.\nWith rosemary potatoes: €18.90', TR: 'Lav ızgarasında mükemmel pişirilmiş sulu marine tavuk şiş. Basmati pirinci, ızgara biber, domates ve taze yan salata ile servis edilir.\nBiberiyeli patates ile: 18,90 €' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Hauptgerichte',
+    tags: ['meat', 'classic']
+  },
+  {
+    id: 'f_haupt_3',
+    name: { DE: 'Türkische Grillköfte', EN: 'Turkish Grillköfte', TR: 'Türkische Grillköfte' },
+    price: 16.90,
+    description: { DE: 'Traditionell gewürzte, gegrillte Köfte, wahlweise mit Basmati-Reis oder knusprigen Pommes. Dazu Beilagensalat, Hummus und eine scharfe Paste.\nMit Rosmarin Kartoffeln: 18,90 €', EN: 'Traditionally spiced, grilled meatballs, choice of basmati rice or crispy fries. Served with side salad, hummus and a spicy paste.\nWith rosemary potatoes: €18.90', TR: 'Geleneksel baharatlı, ızgara köfte, basmati pirinci veya çıtır patates kızartması seçeneğiyle. Yanında salata, humus ve acı ezme ile servis edilir.\nBiberiyeli patates ile: 18,90 €' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Hauptgerichte',
+    tags: ['meat', 'classic']
+  },
+  {
+    id: 'f_haupt_4',
+    name: { DE: 'Goldenes Hähnchenschnitzel', EN: 'Golden Chicken Schnitzel', TR: 'Goldenes Hähnchenschnitzel' },
+    price: 16.90,
+    description: { DE: 'Knusprig paniertes Hähnchenschnitzel, serviert mit Champignon-Sahnesauce, knusprigen Pommes und frischem Beilagensalat.', EN: 'Crispy breaded chicken schnitzel, served with mushroom cream sauce, crispy fries and fresh side salad.', TR: 'Çıtır panelenmiş tavuk şinitzel; mantarlı krema sosu, çıtır patates kızartması ve taze yan salata ile servis edilir.' },
+    imageUrl: '',
     category: 'food',
     subcategory: 'Hauptgerichte',
     tags: ['meat', 'crispy']
   },
   {
-    id: 'f7',
-    name: { DE: 'Beyti Sarma', EN: 'Beyti Sarma', TR: 'Beyti Sarma' },
-    price: 15.90,
-    description: { DE: 'Gerollter Kebab in Lavash mit Tomaten-Butter-Sauce und Joghurt.', EN: 'Gerollter Kebab in Lavash mit Tomaten-Butter-Sauce und Joghurt.', TR: 'Gerollter Kebab in Lavash mit Tomaten-Butter-Sauce und Joghurt.' },
-    imageUrl: '/images/food/beyti_sarma.png',
+    id: 'f_haupt_5',
+    name: { DE: 'Pfefferhähnchen-Traum', EN: 'Pepper Chicken Dream', TR: 'Pfefferhähnchen-Traum' },
+    price: 16.90,
+    description: { DE: 'Zartes Hähnchengeschnetzeltes mit grünen Erbsen und Champignons, verfeinert in einer cremigen Pfeffer-Rahmsauce. Serviert mit duftendem Basmati-Reis.', EN: 'Tender sliced chicken with green peas and mushrooms, refined in a creamy pepper sauce. Served with fragrant basmati rice.', TR: 'Yeşil bezelye ve mantarlı, kremsi biber sosuyla tatlandırılmış yumuşak dilimlenmiş tavuk. Mis kokulu basmati pirinci ile servis edilir.' },
+    imageUrl: '',
     category: 'food',
     subcategory: 'Hauptgerichte',
     tags: ['meat', 'creamy']
   },
   {
-    id: 'f8',
-    name: { DE: 'Pide Kaşarlı', EN: 'Pide Kaşarlı', TR: 'Pide Kaşarlı' },
-    price: 10.90,
-    description: { DE: 'Türkische Pizza mit Käse – knusprig aus dem Steinofen.', EN: 'Türkische Pizza mit Käse – knusprig aus dem Steinofen.', TR: 'Türkische Pizza mit Käse – knusprig aus dem Steinofen.' },
+    id: 'f_haupt_6',
+    name: { DE: 'Zarter Grilllachs', EN: 'Tender Grilled Salmon', TR: 'Zarter Grilllachs' },
+    price: 21.90,
+    description: { DE: 'Zart mariniertes Lachsfilet vom Grill, serviert mit Rosmarinkartoffeln, gegrilltem Gemüse und einem frischen Beilagensalat.', EN: 'Tender marinated salmon fillet from the grill, served with rosemary potatoes, grilled vegetables and a fresh side salad.', TR: 'Izgarada yumuşak marine edilmiş somon fileto; biberiyeli patates, ızgara sebzeler ve taze yan salata ile servis edilir.' },
     imageUrl: '',
     category: 'food',
     subcategory: 'Hauptgerichte',
-    tags: ['classic', 'crispy']
+    tags: ['fish', 'premium']
+  },
+
+  // Bowls & Salate
+  {
+    id: 'f_bowl_1',
+    name: { DE: 'Beef Balance Bowl', EN: 'Beef Balance Bowl', TR: 'Beef Balance Bowl' },
+    price: 16.90,
+    description: { DE: 'Marinierte Scheiben von zartem Rinderfilet, auf Basmati-Reis, Mais, Hummus, gemischtem Salat und Paprika, abgerundet mit Cherrytomaten und Honig-Senf-Dressing.', EN: 'Marinated slices of tender beef fillet on basmati rice, corn, hummus, mixed salad and peppers, rounded off with cherry tomatoes and honey-mustard dressing.', TR: 'Basmati pirinci, mısır, humus, karışık salata ve biber üzerinde yumuşak dana bonfile dilimleri; çeri domates ve ballı hardal sosuyla taçlandırılmış.' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Bowls & Salate',
+    tags: ['meat', 'fresh', 'healthy']
   },
   {
-    id: 'f9',
-    name: { DE: 'Lahmacun', EN: 'Lahmacun', TR: 'Lahmacun' },
+    id: 'f_bowl_2',
+    name: { DE: 'Chicken Power Bowl', EN: 'Chicken Power Bowl', TR: 'Chicken Power Bowl' },
+    price: 14.90,
+    description: { DE: 'Zart marinierte Hähnchenbruststücke auf Basmati-Reis, kombiniert mit Edamamebohnen, Paprika, Avocado, Hummus, Cherrytomaten, Mais und Gurken. Abgerundet mit einem cremigen Honig-Senf-Dressing.', EN: 'Tender marinated chicken breast pieces on basmati rice, combined with edamame beans, peppers, avocado, hummus, cherry tomatoes, corn and cucumber. Rounded off with a creamy honey-mustard dressing.', TR: 'Basmati pirinci üzerinde yumuşak marine edilmiş tavuk göğsü parçaları; edamame fasulyesi, biber, avokado, humus, çeri domates, mısır ve salatalık ile. Kremsi ballı hardal sosuyla tamamlanmış.' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Bowls & Salate',
+    tags: ['meat', 'fresh', 'healthy']
+  },
+  {
+    id: 'f_bowl_3',
+    name: { DE: 'Salmon Energy Bowl', EN: 'Salmon Energy Bowl', TR: 'Salmon Energy Bowl' },
+    price: 15.90,
+    description: { DE: 'Frisch gegrillter Lachs auf duftendem Basmati-Reis, serviert mit Edamamebohnen, Avocado, Hummus, Paprika, Mais, Gurken, Cherrytomaten und Honig-Senf-Dressing.', EN: 'Freshly grilled salmon on fragrant basmati rice, served with edamame beans, avocado, hummus, peppers, corn, cucumber, cherry tomatoes and honey-mustard dressing.', TR: 'Mis kokulu basmati pirinci üzerinde taze ızgara somon; edamame fasulyesi, avokado, humus, biber, mısır, salatalık, çeri domates ve ballı hardal sosuyla servis edilir.' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Bowls & Salate',
+    tags: ['fish', 'fresh', 'healthy']
+  },
+  {
+    id: 'f_bowl_4',
+    name: { DE: 'Classic Caesar Salad', EN: 'Classic Caesar Salad', TR: 'Classic Caesar Salad' },
+    price: 14.90,
+    description: { DE: 'Knackiger Römersalat mit marinierten Hähnchenbruststreifen, Cherrytomaten, Gurken, knusprigen Croutons und einem cremigen Caesar-Dressing.', EN: 'Crisp romaine lettuce with marinated chicken breast strips, cherry tomatoes, cucumbers, crispy croutons and a creamy Caesar dressing.', TR: 'Marine tavuk göğsü şeritleri, çeri domates, salatalık, çıtır kruton ve kremsi Sezar soslu çıtır marul salatası.' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Bowls & Salate',
+    tags: ['meat', 'fresh']
+  },
+
+  // Pasta Gerichte
+  {
+    id: 'f_pasta_1',
+    name: { DE: 'Oriental Manti', EN: 'Oriental Manti', TR: 'Oriental Manti' },
+    price: 12.90,
+    description: { DE: 'Traditionelle, gefüllte Teigtaschen mit Rinderhackfleisch, serviert mit cremigem Joghurt, Knoblauch und Paprikatomatensoße. Verfeinert mit getrockneter Minze.', EN: 'Traditional dumplings filled with minced beef, served with creamy yogurt, garlic and paprika-tomato sauce. Refined with dried mint.', TR: 'Dana kıymalı geleneksel mantı; sarımsaklı kremsi yoğurt ve biberli domates sosu ile servis edilir. Kuru nane ile tatlandırılmış.' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Pasta Gerichte',
+    tags: ['classic', 'meat']
+  },
+  {
+    id: 'f_pasta_2',
+    name: { DE: 'Oven-Baked Gnocchi', EN: 'Oven-Baked Gnocchi', TR: 'Oven-Baked Gnocchi' },
+    price: 12.90,
+    description: { DE: 'Zarte Gnocchi in einer cremigen Tomaten-Sahnesoße, mit herzhaftem Käse überbacken - perfekt für Vegetarier und Liebhaber italienischer Klassiker.', EN: 'Tender gnocchi in a creamy tomato-cream sauce, baked with hearty cheese - perfect for vegetarians and lovers of Italian classics.', TR: 'Kremsi domates-krema soslu, doyurucu peynirle fırınlanmış yumuşak gnocchi - vejetaryenler ve İtalyan klasikleri sevenler için mükemmel.' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Pasta Gerichte',
+    tags: ['vegetarian', 'creamy']
+  },
+  {
+    id: 'f_pasta_3',
+    name: { DE: 'Your Favorite', EN: 'Your Favorite', TR: 'Your Favorite' },
+    price: 13.90,
+    description: { DE: 'Penne-Nudeln mit knusprig panierten Hähnchenstücken in einer cremigen Tomaten-Sahnesoße - ein echter Klassiker!', EN: 'Penne pasta with crispy breaded chicken pieces in a creamy tomato-cream sauce - a real classic!', TR: 'Kremsi domates-krema sosunda çıtır panelenmiş tavuk parçalarıyla penne makarna - gerçek bir klasik!' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Pasta Gerichte',
+    tags: ['meat', 'creamy']
+  },
+  {
+    id: 'f_pasta_4',
+    name: { DE: 'Creamy Chicken Penne (Penne-Pollo)', EN: 'Creamy Chicken Penne', TR: 'Creamy Chicken Penne' },
+    price: 13.90,
+    description: { DE: 'Penne-Nudeln mit Hähnchenbruststreifen, Champignons und Brokkoli, wahlweise in Sahne-, Tomatensahne- oder Tomatensoße. Getoppt mit Parmesan.\nMit knusprig panierten Hähnchenstücken: 14,90 €', EN: 'Penne pasta with chicken breast strips, mushrooms and broccoli, choice of cream, tomato-cream or tomato sauce. Topped with Parmesan.\nWith crispy breaded chicken pieces: €14.90', TR: 'Tavuk göğsü şeritleri, mantar ve brokoli ile penne makarna; krema, domates-krema veya domates sosu seçeneğiyle. Parmesan ile taçlandırılmış.\nÇıtır panelenmiş tavuk parçaları ile: 14,90 €' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Pasta Gerichte',
+    tags: ['meat', 'creamy']
+  },
+  {
+    id: 'f_pasta_5',
+    name: { DE: 'Rigatoni Creamy Sucuk', EN: 'Rigatoni Creamy Sucuk', TR: 'Rigatoni Creamy Sucuk' },
+    price: 12.90,
+    description: { DE: 'Al dente gekochte Rigatoni in einer herrlich cremigen Tomaten-Sahnesauce, verfeinert mit der kräftigen Würze von gebratener Premium-Sucuk und Paprika. Garniert mit frisch geriebenem Parmesan, fruchtigen Kirschtomaten und knackigem Rucola.', EN: 'Al dente cooked rigatoni in a wonderfully creamy tomato-cream sauce, refined with the strong flavor of fried premium sucuk and peppers. Garnished with freshly grated Parmesan, fruity cherry tomatoes and crisp arugula.', TR: 'Kızartılmış birinci sınıf sucuk ve biberin güçlü aromasıyla tatlandırılmış, harika kremsi domates-krema sosunda al dente pişmiş rigatoni. Taze rendelenmiş Parmesan, meyvemsi çeri domates ve çıtır roka ile süslenmiş.' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Pasta Gerichte',
+    tags: ['meat', 'creamy', 'spicy']
+  },
+  {
+    id: 'f_pasta_6',
+    name: { DE: 'Rigatoni Cremy Chicken', EN: 'Rigatoni Creamy Chicken', TR: 'Rigatoni Creamy Chicken' },
+    price: 13.90,
+    description: { DE: 'Rigatoni-Nudeln mit Hähnchenbruststreifen, Champignons und Brokkoli in Sahnesoße. Getoppt mit Parmesan.\nMit knusprig panierten Hähnchenstücken: 14,90 €', EN: 'Rigatoni pasta with chicken breast strips, mushrooms and broccoli in cream sauce. Topped with Parmesan.\nWith crispy breaded chicken pieces: €14.90', TR: 'Tavuk göğsü şeritleri, mantar ve brokoli ile krema soslu rigatoni makarna. Parmesan ile taçlandırılmış.\nÇıtır panelenmiş tavuk parçaları ile: 14,90 €' },
+    imageUrl: '',
+    category: 'food',
+    subcategory: 'Pasta Gerichte',
+    tags: ['meat', 'creamy']
+  },
+
+  // --- Desserts ---
+  {
+    id: 'food_dessert_1',
+    name: { DE: 'Lotus Caramel Cheesecake', EN: 'Lotus Caramel Cheesecake', TR: 'Lotus Karamel Cheesecake' },
+    description: {
+      DE: 'Cremiger Cheesecake, verfeinert mit Karamellsauce und frischen Beerenfrüchten.',
+      EN: 'Creamy cheesecake, refined with caramel sauce and fresh berries.',
+      TR: 'Karamel sosu ve taze orman meyveleri ile tatlandırılmış kremsi cheesecake.'
+    },
     price: 7.90,
-    description: { DE: 'Hauchdünner türkischer Fladen mit Hackfleisch und Kräutern.', EN: 'Hauchdünner türkischer Fladen mit Hackfleisch und Kräutern.', TR: 'Hauchdünner türkischer Fladen mit Hackfleisch und Kräutern.' },
-    imageUrl: '/images/food/lahmacun.png',
     category: 'food',
-    subcategory: 'Hauptgerichte',
-    tags: ['classic', 'crispy']
+    subcategory: 'Desserts',
+    imageUrl: '/images/menu/food-dessert-1.webp'
   },
   {
-    id: 'f10',
-    name: { DE: 'Pommes Frites', EN: 'Pommes Frites', TR: 'Pommes Frites' },
-    price: 5.50,
-    description: { DE: 'Knusprige Pommes mit Ketchup oder Mayo.', EN: 'Knusprige Pommes mit Ketchup oder Mayo.', TR: 'Knusprige Pommes mit Ketchup oder Mayo.' },
-    imageUrl: '/images/food/pommes_frites.png',
-    category: 'food',
-    subcategory: 'Snacks',
-    tags: ['crispy']
-  },
-  {
-    id: 'f11',
-    name: { DE: 'Nachos Supreme', EN: 'Nachos Supreme', TR: 'Nachos Supreme' },
+    id: 'food_dessert_2',
+    name: { DE: 'Chocolate Lava Brownie', EN: 'Chocolate Lava Brownie', TR: 'Çikolatalı Lava Brownie' },
+    description: {
+      DE: 'Warmer, schokoladiger Brownie, serviert mit Vanilleeis und frischen Beeren.',
+      EN: 'Warm, chocolatey brownie served with vanilla ice cream and fresh berries.',
+      TR: 'Sıcak, çikolatalı brownie, vanilyalı dondurma ve taze meyveler ile servis edilir.'
+    },
     price: 8.90,
-    description: { DE: 'Tortilla-Chips mit Käse, Jalapeños und Sour Cream.', EN: 'Tortilla-Chips mit Käse, Jalapeños und Sour Cream.', TR: 'Tortilla-Chips mit Käse, Jalapeños und Sour Cream.' },
-    imageUrl: '/images/food/nachos_supreme.png',
     category: 'food',
-    subcategory: 'Snacks',
-    tags: ['crispy']
+    subcategory: 'Desserts',
+    imageUrl: '/images/menu/food-dessert-2.webp'
   },
   {
-    id: 'f12',
-    name: { DE: 'Cheese Burger', EN: 'Cheese Burger', TR: 'Cheese Burger' },
+    id: 'food_dessert_3',
+    name: { DE: 'Golden Churros', EN: 'Golden Churros', TR: 'Altın Churros' },
+    description: {
+      DE: 'Knusprige, frittierte Spritzgebäck-Stangen, bestäubt mit Zimtzucker. Dazu eine cremige Nutella-Sauce.',
+      EN: 'Crispy fried pastry sticks dusted with cinnamon sugar. Served with creamy Nutella sauce.',
+      TR: 'Tarçın ve şeker serpilmiş çıtır churros. Yanında kremsi Nutella sosu ile.'
+    },
     price: 9.90,
-    description: { DE: 'Saftiges Rindfleisch-Patty mit Cheddar, Salat und Sauce.', EN: 'Saftiges Rindfleisch-Patty mit Cheddar, Salat und Sauce.', TR: 'Saftiges Rindfleisch-Patty mit Cheddar, Salat und Sauce.' },
-    imageUrl: '/images/food/cheese_burger.png',
     category: 'food',
-    subcategory: 'Snacks',
-    tags: ['meat']
+    subcategory: 'Desserts',
+    imageUrl: '/images/menu/food-dessert-3.webp'
+  },
+  {
+    id: 'food_dessert_4',
+    name: { DE: 'Mini Pancakes', EN: 'Mini Pancakes', TR: 'Mini Krepler' },
+    description: {
+      DE: 'Zwölf luftige Mini Pancakes, serviert mit cremiger Schokosoße und einer Kugel feinstem Vanilleeis. Abgerundet mit frischen Früchten und einem Hauch Puderzucker – perfekt zum Genießen und Teilen.',
+      EN: 'Twelve fluffy mini pancakes served with creamy chocolate sauce and a scoop of vanilla ice cream. Topped with fresh fruit and powdered sugar.',
+      TR: 'On iki adet puf mini krep, çikolata sosu ve vanilyalı dondurma ile. Taze meyveler ve pudra şekeri ile tamamlanmıştır.'
+    },
+    price: 11.90,
+    category: 'food',
+    subcategory: 'Desserts',
+    imageUrl: '/images/menu/food-dessert-4.webp'
+  },
+  {
+    id: 'food_dessert_5',
+    name: { DE: 'Austrian Kaiserschmarrn', EN: 'Austrian Kaiserschmarrn', TR: 'Avusturya Kaiserschmarrn' },
+    description: {
+      DE: 'Luftiger Kaiserschmarrn, serviert mit Vanillesoße, Apfelmus und Puderzucker. (+2.00 € mit Nutella)',
+      EN: 'Fluffy shredded pancake served with vanilla sauce, applesauce, and powdered sugar.',
+      TR: 'Vanilya sosu, elma püresi ve pudra şekeri ile servis edilen puf krep parçaları.'
+    },
+    price: 12.90,
+    category: 'food',
+    subcategory: 'Desserts',
+    imageUrl: '/images/menu/food-dessert-5.webp'
+  },
+  {
+    id: 'food_dessert_6',
+    name: { DE: 'Warm Apple Delight', EN: 'Warm Apple Delight', TR: 'Sıcak Elma Rüyası' },
+    description: {
+      DE: 'Gebackener Apfelstrudel mit Rosinen, serviert mit Vanillesoße und einer Kugel Vanilleeis.',
+      EN: 'Baked apple strudel with raisins, served with vanilla sauce and a scoop of vanilla ice cream.',
+      TR: 'Üzümlü fırınlanmış elmalı turta, vanilya sosu ve bir top vanilyalı dondurma ile.'
+    },
+    price: 8.90,
+    category: 'food',
+    subcategory: 'Desserts',
+    imageUrl: '/images/menu/food-dessert-6.webp'
+  },
+  {
+    id: 'food_dessert_7',
+    name: { DE: 'Obstteller', EN: 'Fruit Platter', TR: 'Meyve Tabağı' },
+    description: {
+      DE: 'Seasonal Fruit Platter. Frisch angerichtetes, saisonales Obst - leicht, gesund und erfrischend.',
+      EN: 'Freshly prepared seasonal fruit platter - light, healthy, and refreshing.',
+      TR: 'Taze hazırlanmış mevsim meyveleri tabağı - hafif, sağlıklı ve ferahlatıcı.'
+    },
+    price: 17.90,
+    category: 'food',
+    subcategory: 'Desserts',
+    imageUrl: '/images/menu/food-dessert-7.webp'
+  },
+  {
+    id: 'food_dessert_8',
+    name: { DE: 'Original San Sebastián Cheesecake', EN: 'Original San Sebastian Cheesecake', TR: 'Orijinal San Sebastian Cheesecake' },
+    description: {
+      DE: 'Klassik: 6.90 €, mit Vollmilchschokosoße: 8.90 €, mit weißer Schokosoße: 8.90 €',
+      EN: 'Classic: 6.90 €, with milk chocolate sauce: 8.90 €, with white chocolate sauce: 8.90 €',
+      TR: 'Klasik: 6.90 €, sütlü çikolata sosu ile: 8.90 €, beyaz çikolata sosu ile: 8.90 €'
+    },
+    price: 6.90,
+    category: 'food',
+    subcategory: 'Desserts',
+    imageUrl: '/images/menu/food-dessert-8.webp'
   },
 
   // --- Kombis ---
@@ -1735,3 +1928,15 @@ export const quizQuestions = [
     ]
   }
 ];
+
+export const allergenLegend: Record<string, string> = {
+  'A': 'Glutenhaltiges Getreide', 'B': 'Krebstiere', 'C': 'Eier', 'D': 'Fisch', 'E': 'Erdnüsse',
+  'F': 'Sojabohnen', 'G': 'Milch', 'H': 'Schalenfrüchte', 'L': 'Sellerie', 'M': 'Senf',
+  'N': 'Sesamsamen', 'O': 'Schwefeldioxid und Sulfite', 'P': 'Lupinen', 'R': 'Weichtiere'
+};
+
+export const additiveLegend: Record<string, string> = {
+  '1': 'mit Farbstoff', '2': 'mit Konservierungsstoff', '3': 'mit Antioxidationsmittel',
+  '4': 'mit Geschmacksverstärker', '5': 'geschwefelt', '6': 'geschwärzt', '7': 'gewachst',
+  '8': 'mit Phosphat', '9': 'mit Süßungsmittel', '10': 'enthält eine Phenylalaninquelle'
+};

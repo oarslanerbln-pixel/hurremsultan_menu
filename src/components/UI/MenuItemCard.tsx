@@ -152,9 +152,10 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
           whileTap={{ scale: 0.96, rotate: -1 }}
         >
           {/* Ambient blurred background */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center blur-2xl opacity-50 scale-125 pointer-events-none transition-opacity duration-700 group-hover:opacity-70"
-            style={{ backgroundImage: `url(${item.imageUrl})` }}
+          <img 
+            src={getAssetUrl(item.imageUrl)}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-50 scale-125 pointer-events-none transition-opacity duration-700 group-hover:opacity-70"
           />
 
           {/* LED Glow specifically for Hürrem Spezial Hookah (s18) */}
@@ -170,7 +171,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
             alt={itemName} 
             className="relative w-full h-full object-cover object-[center_30%] transition-transform duration-[800ms] ease-out group-hover:scale-105 drop-shadow-[0_0_15px_rgba(218,165,32,0.3)] brightness-90 contrast-[1.15] saturate-[1.1]" 
             loading="lazy"
-            style={{
+            style={{ // NOSONAR
               maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)',
               WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)'
             }}
@@ -276,7 +277,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
         </div>
       </div>
 
-      {/* Description */}
+      {/* Description & Allergens */}
       <div className={`relative z-10 ${isSignature ? 'w-[95%] mt-2' : 'w-[88%] mt-0.5'}`}>
         {isSignature && (
           <div className="w-8 h-px bg-gold-500/40 mb-2" />
@@ -286,6 +287,22 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
         }`}>
           {itemDesc}
         </p>
+
+        {/* Allergens & Additives (Small Badges) */}
+        {(item.allergens?.length || item.additives?.length) ? (
+          <div className="flex flex-wrap gap-1 mt-2">
+            {item.allergens?.map(a => (
+              <span key={a} className="font-display text-[9px] text-gray-400 border border-gray-600/50 rounded px-1 min-w-[1rem] text-center" title="Allergen">
+                {a}
+              </span>
+            ))}
+            {item.additives?.map(a => (
+              <span key={a} className="font-display text-[9px] text-gray-400 border border-gray-600/50 rounded px-1 min-w-[1rem] text-center" title="Zusatzstoff">
+                {a}
+              </span>
+            ))}
+          </div>
+        ) : null}
 
         {/* Intensity bar chart (Shisha only) */}
         {item.intensity !== undefined && (
@@ -374,11 +391,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
         >
           {/* Ambient Background with Theme Color glow */}
           <div 
-            className="absolute inset-0 transition-colors duration-1000 theme-bg"
-            style={{
-              opacity: 0.95,
-              backdropFilter: 'blur(30px)'
-            }}
+            className="absolute inset-0 transition-colors duration-1000 theme-bg opacity-[0.95] backdrop-blur-[30px]"
           />
 
           <motion.div
@@ -390,13 +403,13 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
               y: parallaxY,
             }}
           >
-            {/* Close Button */}
+            {/* Close Button - FIXED to Viewport for easy access on mobile */}
             <button 
               onClick={() => setIsExpanded(false)}
               aria-label="Kapat"
-              className="absolute -top-12 right-0 z-[110] w-10 h-10 rounded-full bg-black/5 backdrop-blur-md flex items-center justify-center text-black/50 hover:text-black hover:bg-black/10 transition-all border border-black/10 shadow-sm"
+              className="fixed top-6 right-6 z-[120] w-12 h-12 rounded-full bg-black/60 backdrop-blur-xl flex items-center justify-center text-white hover:text-gold-400 hover:bg-black/80 transition-all border border-white/20 shadow-[0_0_20px_rgba(0,0,0,0.8)]"
             >
-              <X className="w-5 h-5" />
+              <X className="w-6 h-6" />
             </button>
 
             {/* Image Header - Centered & Sized */}
@@ -480,6 +493,22 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
               <p className="font-body text-[14px] theme-text-muted leading-relaxed font-light mb-6">
                 {itemDesc}
               </p>
+
+              {/* Allergens & Additives (Small Badges for Modal) */}
+              {(item.allergens?.length || item.additives?.length) ? (
+                <div className="flex flex-wrap gap-1.5 mb-6">
+                  {item.allergens?.map(a => (
+                    <span key={a} className="font-display font-bold text-[10px] text-gray-400 border border-gray-600/50 rounded-md px-1.5 min-w-[1.25rem] h-5 flex items-center justify-center" title="Allergen">
+                      {a}
+                    </span>
+                  ))}
+                  {item.additives?.map(a => (
+                    <span key={a} className="font-display font-bold text-[10px] text-gray-400 border border-gray-600/50 rounded-md px-1.5 min-w-[1.25rem] h-5 flex items-center justify-center" title="Zusatzstoff">
+                      {a}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
 
               {/* Flavor Profile Stats / Ingredients (If available) */}
               {item.flavorProfile && (

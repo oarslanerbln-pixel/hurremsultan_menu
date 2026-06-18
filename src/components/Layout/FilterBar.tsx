@@ -62,13 +62,13 @@ export default function FilterBar({ isCompact }: FilterBarProps) {
         </div>
 
         {/* Subcategory tabs — with pill background on active */}
-        <div className="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth -webkit-overflow-scrolling-touch pb-1">
-          <div ref={chipsScrollRef} className="flex gap-5 overflow-x-auto no-scrollbar px-4">
+        <div className="w-full overflow-x-auto no-scrollbar scroll-smooth -webkit-overflow-scrolling-touch py-2">
+          <div ref={chipsScrollRef} className="flex gap-5 px-4">
             {subcategories.map(sub => (
               <button
                 key={sub}
                 onClick={() => handleSubcategoryClick(sub)}
-                className={`py-2 px-3 rounded-full relative font-display text-[12px] sm:text-[14px] font-bold tracking-[0.15em] uppercase transition-all duration-300 whitespace-nowrap shrink-0 ${
+                className={`py-2 px-4 rounded-full relative font-display text-[12px] sm:text-[14px] font-bold tracking-[0.15em] uppercase transition-all duration-300 whitespace-nowrap shrink-0 ${
                   activeSubcategory === sub
                     ? 'text-gold-800'
                     : 'text-text-tertiary hover:text-gold-600'
@@ -84,7 +84,7 @@ export default function FilterBar({ isCompact }: FilterBarProps) {
                       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                     />
                     {/* Elegant under glow */}
-                    <div className="absolute inset-x-0 -bottom-1 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent opacity-50" />
+                    <div className="absolute inset-x-0 -bottom-[3px] h-[2px] bg-gradient-to-r from-transparent via-gold-500 to-transparent opacity-50" />
                   </>
                 )}
               </button>

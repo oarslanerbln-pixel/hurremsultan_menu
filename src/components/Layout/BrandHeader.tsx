@@ -92,7 +92,7 @@ export default function BrandHeader({ onSecretMenuOpen }: BrandHeaderProps) {
             initial={{ opacity: 0, x: -20, rotate: -8 }}
             animate={{ opacity: 1, x: 0, rotate: -2 }}
             transition={{ duration: 2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="font-handwriting text-shimmer text-[4.5rem] sm:text-[6.5rem] leading-tight -mt-4 mr-4 transform drop-shadow-[0_10px_25px_rgba(0,0,0,1)]"
+            className="font-brand italic text-[3rem] sm:text-[4rem] text-gold-200 leading-tight -mt-2 ml-3 transform drop-shadow-[0_10px_25px_rgba(0,0,0,1)]"
           >
             {t('brand_sultan')}
           </motion.span>

@@ -38,7 +38,7 @@ const SecretMenu: React.FC<SecretMenuProps> = ({ isOpen, onClose }) => {
     { id: 'neo-classic', label: 'Neo-Classic (Default)' },
     { id: 'brutalist', label: 'Brutalist Luxury' },
     { id: 'skeuomorphic', label: 'Skeuomorphic Velvet' },
-    { id: 'avant-garde', label: 'Avant-Garde' },
+    { id: 'azure-cream', label: 'Azure Cream' },
     { id: 'cyber-gold', label: 'Cyber-Gold' },
     { id: 'ottoman-palace', label: 'Ottoman Palace (Royal)' },
     { id: 'monolithic-matte', label: 'Monolithic Matte (Old Money)' },
@@ -243,23 +243,41 @@ const SecretMenu: React.FC<SecretMenuProps> = ({ isOpen, onClose }) => {
                         Konsept Testi
                       </h3>
                     </div>
-                    <div className="grid grid-cols-2 gap-2">
-                      {concepts.map(c => (
-                        <button
-                          key={c.id}
-                          onClick={() => {
-                            setConcept(c.id);
-                            if (navigator.vibrate) navigator.vibrate(10);
-                          }}
-                          className={`text-left px-3 py-3 rounded-xl border font-body text-[10px] tracking-wider uppercase transition-all flex flex-col justify-center min-h-[60px] ${
-                            concept === c.id
-                              ? 'bg-gold-500/20 border-gold-500 text-gold-400 shadow-[0_0_15px_rgba(197,165,90,0.2)]'
-                              : 'bg-black/20 border-white/10 text-white/50 hover:bg-white/5 hover:border-gold-500/30'
-                          }`}
-                        >
-                          {c.label}
-                        </button>
-                      ))}
+                    <div className="grid grid-cols-2 gap-3">
+                      {concepts.map(c => {
+                        const isActive = concept === c.id;
+                        
+                        // Helper to get custom class
+                        const getConceptClass = (id: string) => {
+                          switch(id) {
+                            case 'neo-classic': return 'concept-btn-neo-classic';
+                            case 'brutalist': return 'concept-btn-brutalist border-0';
+                            case 'skeuomorphic': return 'concept-btn-skeuomorphic';
+                            case 'azure-cream': return 'concept-btn-azure-cream';
+                            case 'cyber-gold': return 'concept-btn-cyber-gold';
+                            case 'ottoman-palace': return 'concept-btn-ottoman';
+                            case 'monolithic-matte': return 'concept-btn-monolithic';
+                            case 'world-cup': return 'concept-btn-world-cup';
+                            default: return '';
+                          }
+                        };
+                        
+                        const baseClass = "text-center px-2 py-3 border border-white/10 font-body text-[10px] tracking-widest uppercase transition-all flex items-center justify-center min-h-[64px] relative";
+                        const customClass = getConceptClass(c.id);
+                        
+                        return (
+                          <button
+                            key={c.id}
+                            onClick={() => {
+                              setConcept(c.id);
+                              if (navigator.vibrate) navigator.vibrate(10);
+                            }}
+                            className={`${baseClass} ${customClass} ${isActive ? 'active text-gold-100' : 'opacity-70 hover:opacity-100 text-white/70'}`}
+                          >
+                            <span className="relative z-10 drop-shadow-md pointer-events-none">{c.label}</span>
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
 

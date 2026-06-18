@@ -141,19 +141,19 @@
   --theme-card-padding: 16px;
 }
 
-/* 5. AVANT-GARDE */
-[data-concept="avant-garde"] {
-  --theme-bg: #f4f0ec;
-  --theme-card-bg: transparent;
-  --theme-card-border: rgba(0, 0, 0, 0.1);
-  --theme-text-primary: #222222;
-  --theme-text-secondary: #666666;
-  --theme-accent: #e53935;
-  --theme-radius: 0px;
-  --theme-shadow: none;
-  --theme-modal-bg: rgba(255, 255, 255, 0.98);
-  --theme-modal-text: #111111;
-  --theme-card-padding: 0px;
+/* 5. AZURE CREAM */
+[data-concept="azure-cream"] {
+  --theme-bg: #F5F3ED;
+  --theme-card-bg: rgba(255, 255, 255, 0.7);
+  --theme-card-border: rgba(31, 58, 75, 0.1);
+  --theme-text-primary: #1A2F3D;
+  --theme-text-secondary: #425F75;
+  --theme-accent: #2A4B61;
+  --theme-radius: 16px;
+  --theme-shadow: 0 8px 32px rgba(31, 58, 75, 0.08);
+  --theme-modal-bg: rgba(245, 243, 237, 0.95);
+  --theme-modal-text: #1A2F3D;
+  --theme-card-padding: 16px;
 }
 
 /* 6. MONOLITHIC MATTE */
@@ -1242,3 +1242,5 @@ button, a {
 .theme-image-gradient {
   background: var(--theme-img-gradient);
 }
+
+html, body { overflow-x: clip; width: 100%; max-width: 100%; }

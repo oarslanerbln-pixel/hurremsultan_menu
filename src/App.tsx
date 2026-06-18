@@ -28,6 +28,7 @@ const Background3D = lazy(() => import('./components/3D/Background3D'));
 const SecretMenu = lazy(() => import('./components/UI/SecretMenu'));
 const OracleQuiz = lazy(() => import('./components/Quiz/OracleQuiz'));
 const MixologyBuilder = lazy(() => import('./components/UI/MixologyBuilder'));
+// Removed CrypticBackground
 
 // Main App inner — uses context hooks
 function AppInner() {
@@ -56,7 +57,7 @@ function AppInner() {
   return (
     <WishlistProvider>
       <CartProvider>
-        <div className="min-h-screen overflow-x-hidden pb-44 relative bg-transparent selection:bg-gold-500/30 selection:text-gold-900">
+        <div className="min-h-screen pb-44 relative bg-transparent selection:bg-gold-500/30 selection:text-gold-900 w-full max-w-full">
           <AmbientBackground />
           <IntroScreen isVisible={showIntro} />
           <Suspense fallback={null}>

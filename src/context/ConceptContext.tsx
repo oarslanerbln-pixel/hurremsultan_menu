@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export type UIConcept = 'neo-classic' | 'brutalist' | 'skeuomorphic' | 'avant-garde' | 'cyber-gold' | 'ottoman-palace' | 'monolithic-matte' | 'world-cup';
+export type UIConcept = 'neo-classic' | 'brutalist' | 'skeuomorphic' | 'azure-cream' | 'cyber-gold' | 'ottoman-palace' | 'monolithic-matte' | 'world-cup';
 
 interface ConceptContextType {
   concept: UIConcept;
@@ -18,7 +18,7 @@ export const useConcept = () => useContext(ConceptContext);
 const getInitialConcept = (): UIConcept => {
   if (typeof window !== 'undefined') {
     const saved = localStorage.getItem('huerrem_ui_concept') as UIConcept;
-    if (saved && ['neo-classic', 'brutalist', 'skeuomorphic', 'avant-garde', 'cyber-gold', 'ottoman-palace', 'monolithic-matte', 'world-cup'].includes(saved)) {
+    if (saved && ['neo-classic', 'brutalist', 'skeuomorphic', 'azure-cream', 'cyber-gold', 'ottoman-palace', 'monolithic-matte', 'world-cup'].includes(saved)) {
       return saved;
     }
   }

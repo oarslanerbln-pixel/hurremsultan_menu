@@ -82,12 +82,54 @@ export function MenuProvider({ children }: { children: ReactNode }) {
   };
 
   const subcategories = useMemo(() => {
-    return ['All', ...Array.from(new Set(
+    const subs = Array.from(new Set(
       allItems
         .filter(item => item.category === activeCategory)
         .map(item => item.subcategory)
         .filter((sub): sub is string => Boolean(sub))
-    ))];
+    ));
+
+    // Define logical ordering for Drinks
+    const SUBCATEGORY_ORDER: Record<string, number> = {
+  // Shisha
+  'Premium Shisha': 1,
+  'Klassik Shisha': 2,
+  'Pfeifen': 3,
+  'HMD (Aufsätze)': 4,
+  'Shisha Extras': 5,
+  // Drinks
+  'Sommer-Specials': 10,
+  'Cocktails': 11,
+  'Mocktails': 12,
+  'Shakes': 13,
+  'Softdrinks': 14,
+  'Kaffee': 15,
+  'Eistee': 16,
+  'Wein & Sekt': 17,
+  'Bier': 18,
+  // Food
+  'Burger Gerichte': 20,
+  'Hauptgerichte': 21,
+  'Bowls & Salate': 22,
+  'Pasta Gerichte': 23,
+  // Old ones as fallback
+  'Vorspeisen': 24,
+  'Snacks': 25,
+  'Dessert': 26,
+  'Kombis': 27,
+};
+
+    subs.sort((a, b) => {
+      const indexA = SUBCATEGORY_ORDER[a] !== undefined ? SUBCATEGORY_ORDER[a] : -1;
+      const indexB = SUBCATEGORY_ORDER[b] !== undefined ? SUBCATEGORY_ORDER[b] : -1;
+      
+      if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+      return a.localeCompare(b);
+    });
+
+    return ['All', ...subs];
   }, [allItems, activeCategory]);
 
   const filteredItems = useMemo(() => {
