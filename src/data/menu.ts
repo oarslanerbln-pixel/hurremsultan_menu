@@ -292,7 +292,7 @@ export const menuData: MenuItem[] = [
       EN: 'Experience our exclusive Hürrem LED shisha with the high-quality Quasar bowl. Choose your individual tobacco mix from two varieties entirely according to your taste.', 
       TR: 'Özel Hürrem LED nargilemizi yüksek kaliteli Quasar lüle ile deneyimleyin. İki çeşit tütün ile tamamen damak zevkinize özel karışımınızı oluşturun.' 
     },
-    imageUrl: '/images/shisha/shisha_concept_led.png',
+    imageUrl: '/images/shisha/shisha_concept_led_turquoise.png',
     category: 'shisha',
     subcategory: 'Signature Blends',
     isSignature: true,

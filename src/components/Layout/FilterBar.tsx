@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { useMenu } from '../../context/MenuContext';
 import type { TranslationKey } from '../../i18n/translations';
-
 import SearchBar from '../UI/SearchBar';
 import { categoriesList } from '../../data/categories';
 
@@ -28,12 +27,13 @@ export default function FilterBar({ isCompact }: FilterBarProps) {
   const handleSubcategoryClick = (sub: string) => {
     setSubcategory(sub);
     playSound('tick');
-    if (navigator.vibrate) navigator.vibrate([30, 20]); // Stronger haptic vibration
+    if (navigator.vibrate) navigator.vibrate([30, 20]);
   };
 
   return (
-    <div className={`sticky top-0 z-30 pt-3 pb-2 transition-all duration-500 ${isCompact ? 'bg-black/40 backdrop-blur-2xl border-b border-white/5 shadow-2xl' : 'bg-transparent'}`}>
-      <div className="container-mobile flex flex-col gap-2.5">
+    <div className={`sticky top-0 z-30 pt-3 pb-1.5 transition-all duration-500 ${isCompact ? 'bg-black/50 backdrop-blur-2xl border-b border-white/5 shadow-2xl' : 'bg-transparent'}`}>
+      <div className="container-mobile flex flex-col gap-2">
+
         {/* Compact brand on scroll */}
         <div className="relative w-full flex justify-center">
           <AnimatePresence>
@@ -45,10 +45,19 @@ export default function FilterBar({ isCompact }: FilterBarProps) {
                 transition={{ duration: 0.2 }}
                 className="absolute bottom-1 w-full flex items-center justify-between px-4 pb-1"
               >
-                <span className="font-brand text-sm tracking-[0.25em] uppercase text-gold font-normal drop-shadow-[0_0_8px_rgba(197,165,90,0.5)]">
+                <span
+                  className="font-brand text-sm font-normal"
+                  style={{
+                    background: 'linear-gradient(135deg, hsl(43,55%,45%) 0%, hsl(43,75%,68%) 50%, hsl(43,50%,50%) 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    letterSpacing: '0.2em',
+                  }}
+                >
                   Hürrem
                 </span>
-                <span className="font-body text-[8px] tracking-widest uppercase text-text-tertiary">
+                <span className="font-body text-[8px] tracking-widest uppercase text-text-tertiary/60">
                   {t(categoriesList.find((c: { key: string, labelKey: string }) => c.key === activeCategory)?.labelKey || 'catShisha')}
                 </span>
               </motion.div>
@@ -61,34 +70,34 @@ export default function FilterBar({ isCompact }: FilterBarProps) {
           <SearchBar />
         </div>
 
-        {/* Subcategory tabs — with pill background on active */}
-        <div className="w-full overflow-x-auto no-scrollbar scroll-smooth -webkit-overflow-scrolling-touch py-2">
-          <div ref={chipsScrollRef} className="flex gap-5 px-4">
-            {subcategories.map(sub => (
-              <button
-                key={sub}
-                onClick={() => handleSubcategoryClick(sub)}
-                className={`py-2 px-4 rounded-full relative font-display text-[12px] sm:text-[14px] font-bold tracking-[0.15em] uppercase transition-all duration-300 whitespace-nowrap shrink-0 ${
-                  activeSubcategory === sub
-                    ? 'text-gold-800'
-                    : 'text-text-tertiary hover:text-gold-600'
-                }`}
-              >
-                {sub === 'All' ? t('subAll') : (t(sub as TranslationKey) || sub)}
-                {activeSubcategory === sub && (
-                  <>
-                    {/* Premium Glow Active Background */}
+        {/* Subcategory tabs — underline style, fine dining */}
+        <div className="w-full overflow-x-auto no-scrollbar scroll-smooth py-1 relative">
+          {/* Fade gradient right edge */}
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 z-10"
+            style={{ background: 'linear-gradient(90deg, transparent, rgba(8,6,4,0.85))' }} />
+
+          <div ref={chipsScrollRef} className="flex gap-6 px-4 border-b border-white/5">
+            {subcategories.map(sub => {
+              const isActive = activeSubcategory === sub;
+              return (
+                <button
+                  key={sub}
+                  onClick={() => handleSubcategoryClick(sub)}
+                  className={`filter-tab ${isActive ? 'active' : 'text-text-tertiary/50 hover:text-text-tertiary'}`}
+                >
+                  {sub === 'All' ? t('subAll') : (t(sub as TranslationKey) || sub)}
+                  {/* Animated underline for active */}
+                  {isActive && (
                     <motion.div
-                      layoutId={`active-sub-bg-${lang}`}
-                      className="absolute inset-0 bg-gradient-to-r from-gold-500/20 to-gold-400/10 border border-gold-500/40 rounded-full shadow-[0_0_15px_rgba(197,165,90,0.3)] -z-10"
-                      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                      layoutId={`filter-underline-${lang}`}
+                      className="absolute bottom-0 left-0 right-0 h-[1.5px]"
+                      style={{ background: 'linear-gradient(90deg, transparent, rgba(197,165,90,0.8), transparent)' }}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
-                    {/* Elegant under glow */}
-                    <div className="absolute inset-x-0 -bottom-[3px] h-[2px] bg-gradient-to-r from-transparent via-gold-500 to-transparent opacity-50" />
-                  </>
-                )}
-              </button>
-            ))}
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>

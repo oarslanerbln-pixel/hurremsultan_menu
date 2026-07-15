@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { MapPin, Trophy } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { useConcept } from '../../context/ConceptContext';
@@ -17,7 +17,7 @@ export default function BrandHeader({ onSecretMenuOpen }: BrandHeaderProps) {
     pressTimer.current = setTimeout(() => {
       onSecretMenuOpen();
       if (navigator.vibrate) navigator.vibrate([50, 100, 50]);
-    }, 1500); // 1.5 seconds hold to unlock
+    }, 1500);
   };
 
   const handlePressEnd = () => {
@@ -28,89 +28,116 @@ export default function BrandHeader({ onSecretMenuOpen }: BrandHeaderProps) {
   };
 
   return (
-    <header className="text-center relative z-20 pt-10 pb-4">
-      {/* Floating Silk Fabric Background Animation above the text */}
-      <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[150%] h-48 pointer-events-none z-0 opacity-90 mix-blend-screen overflow-hidden">
-        {/* Elegant Red Silk */}
+    <header className="text-center relative z-20 pt-10 pb-6">
+      {/* Ambient silk background */}
+      <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[160%] h-52 pointer-events-none z-0 opacity-80 mix-blend-screen overflow-hidden">
+        {/* Deep red silk */}
         <motion.div
-          animate={{
-            y: [-15, 15, -15],
-            rotateZ: [-5, 5, -5],
-            scaleX: [1, 1.1, 1],
-            skewX: [-2, 2, -2]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-24 bg-gradient-to-r from-transparent via-[#8B0000]/60 to-transparent blur-[25px] rounded-[100%]"
+          animate={{ y: [-12, 12, -12], rotateZ: [-4, 4, -4], scaleX: [1, 1.08, 1] }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-24 rounded-[100%] blur-[28px]"
+          style={{ background: 'linear-gradient(90deg, transparent, rgba(139,0,0,0.5), transparent)' }}
         />
-        {/* White Silk overlay */}
+        {/* Gold silk overlay */}
         <motion.div
-          animate={{
-            y: [10, -20, 10],
-            rotateZ: [3, -4, 3],
-            scaleX: [1.1, 0.9, 1.1],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute top-4 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-gradient-to-r from-transparent via-white/20 to-transparent blur-[20px] rounded-[100%]"
-        />
-        {/* Dark Shadow Ribbon for depth */}
-        <motion.div
-          animate={{
-            y: [5, -5, 5],
-            x: [-15, 15, -15],
-          }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute top-12 left-1/2 -translate-x-1/2 w-2/3 h-12 bg-gradient-to-r from-transparent via-black/80 to-transparent blur-[15px] rounded-[100%]"
+          animate={{ y: [8, -18, 8], rotateZ: [2, -3, 2], scaleX: [1.08, 0.92, 1.08] }}
+          transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+          className="absolute top-6 left-1/2 -translate-x-1/2 w-3/4 h-16 rounded-[100%] blur-[22px]"
+          style={{ background: 'linear-gradient(90deg, transparent, rgba(197,165,90,0.15), transparent)' }}
         />
       </div>
 
-      {concept === 'world-cup' && (
-        <div className="absolute top-4 right-6 text-emerald-400 flex flex-col items-center animate-pulse drop-shadow-[0_0_15px_rgba(16,185,129,0.6)] z-20">
-          <Trophy className="w-6 h-6 mb-1" />
-          <span className="text-[7px] font-display font-bold tracking-widest uppercase">VIP Cup</span>
-        </div>
-      )}
       <div className="container-mobile relative z-10">
-        <motion.h1 
-          initial={{ opacity: 0, y: 15, filter: 'blur(15px)', scale: 0.9 }}
+        {/* World Cup badge */}
+        {concept === 'world-cup' && (
+          <div className="absolute top-0 right-6 text-emerald-400 flex flex-col items-center animate-pulse drop-shadow-[0_0_15px_rgba(16,185,129,0.6)] z-20">
+            <span className="text-[7px] font-display font-bold tracking-widest uppercase">VIP Cup</span>
+          </div>
+        )}
+
+        {/* Brand mark — long press to unlock secret menu */}
+        <motion.div
+          initial={{ opacity: 0, y: 18, filter: 'blur(18px)', scale: 0.92 }}
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)', scale: 1 }}
-          transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 2.2, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col items-center justify-center gap-0 relative select-none"
           onPointerDown={handlePressStart}
           onPointerUp={handlePressEnd}
           onPointerLeave={handlePressEnd}
-          onContextMenu={(e) => e.preventDefault()} // Prevent context menu on mobile long press
+          onContextMenu={(e) => e.preventDefault()}
         >
-          <motion.span 
-            initial={{ opacity: 0, scale: 0.95, letterSpacing: '0.1em' }}
-            animate={{ opacity: 1, scale: 1, letterSpacing: '0.3em' }}
-            transition={{ duration: 2.5, delay: 0.2, ease: "easeOut" }}
-            className="font-brand font-normal text-4xl sm:text-[3.5rem] leading-none uppercase text-gold drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)]"
+          {/* Script wordmark */}
+          <motion.span
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 2.8, delay: 0.2, ease: 'easeOut' }}
+            className="font-brand font-normal leading-none select-none"
+            style={{
+              fontSize: 'clamp(3rem, 12vw, 4.5rem)',
+              background: 'linear-gradient(135deg, hsl(43,55%,45%) 0%, hsl(43,75%,70%) 45%, hsl(43,50%,50%) 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.9))',
+              letterSpacing: '0.02em',
+            }}
           >
             Hürrem
           </motion.span>
-          <motion.span 
-            initial={{ opacity: 0, x: -20, rotate: -8 }}
-            animate={{ opacity: 1, x: 0, rotate: -2 }}
-            transition={{ duration: 2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="font-brand italic text-[3rem] sm:text-[4rem] text-gold-200 leading-tight -mt-2 ml-3 transform drop-shadow-[0_10px_25px_rgba(0,0,0,1)]"
+
+          {/* SULTAN — widely spaced caps with bottom border */}
+          <motion.div
+            initial={{ opacity: 0, letterSpacing: '0.05em' }}
+            animate={{ opacity: 1, letterSpacing: '0.52em' }}
+            transition={{ duration: 2.5, delay: 0.5, ease: 'easeOut' }}
+            className="relative font-display font-light text-white/80 mt-0.5 pb-2 will-change-[opacity]"
+            style={{ fontSize: 'clamp(0.7rem, 3vw, 0.9rem)' }}
           >
-            {t('brand_sultan')}
-          </motion.span>
-        </motion.h1>
-        <motion.div 
-          initial={{ width: 0, opacity: 0 }}
-          animate={{ width: 80, opacity: 1 }}
-          transition={{ duration: 2, delay: 1, ease: "easeInOut" }}
-          className="h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-6 mb-4 shadow-[0_0_15px_rgba(218,165,32,0.8)]" 
-        />
-        <motion.div 
-          initial={{ opacity: 0, y: 5 }}
+            SULTAN
+            {/* Ultra-thin bottom rule */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1.8, delay: 1.2, ease: 'easeInOut' }}
+              className="absolute -bottom-0 left-0 right-0 h-px origin-center"
+              style={{ background: 'linear-gradient(90deg, transparent, rgba(197,165,90,0.4), transparent)' }}
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Diamond establishment line */}
+        <motion.div
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, delay: 1.5 }}
-          className="flex items-center justify-center gap-1.5 font-body text-[9px] font-bold tracking-[0.3em] uppercase text-gold-700 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+          transition={{ duration: 1.8, delay: 1.4, ease: 'easeOut' }}
+          className="mt-5 flex items-center justify-center gap-2"
         >
-          <MapPin className="w-3 h-3 text-gold-500" />
-          <span>{t('tagline')}</span>
+          {/* Left line */}
+          <div className="h-px w-10 opacity-40" style={{ background: 'linear-gradient(90deg, transparent, rgba(197,165,90,0.6))' }} />
+          <div className="text-gold-600/50" style={{ fontSize: '6px', letterSpacing: '0.1em' }}>◆</div>
+          {/* Tagline */}
+          <span
+            className="font-body font-light uppercase text-gold-600/60"
+            style={{ fontSize: 'clamp(0.48rem, 1.8vw, 0.58rem)', letterSpacing: '0.28em' }}
+          >
+            {t('tagline')}
+          </span>
+          <div className="text-gold-600/50" style={{ fontSize: '6px', letterSpacing: '0.1em' }}>◆</div>
+          {/* Right line */}
+          <div className="h-px w-10 opacity-40" style={{ background: 'linear-gradient(90deg, rgba(197,165,90,0.6), transparent)' }} />
+        </motion.div>
+
+        {/* Location */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.4, delay: 1.9 }}
+          className="flex items-center justify-center gap-1.5 mt-2"
+        >
+          <MapPin className="w-2.5 h-2.5 text-gold-600/40" />
+          <span className="font-body text-gold-600/40" style={{ fontSize: '0.52rem', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
+            Berlin · Kreuzberg
+          </span>
         </motion.div>
       </div>
     </header>

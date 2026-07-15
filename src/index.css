@@ -81,19 +81,19 @@
    THEME ENGINE (DATA-CONCEPT)
    ============================================ */
 
-/* 1. NEO-CLASSIC (Default) */
+/* 1. NEO-CLASSIC (Default) — Premium Fine Dining */
 [data-concept="neo-classic"] {
   --theme-bg: var(--marble-base);
-  --theme-card-bg: rgba(15, 12, 10, 0.65);
-  --theme-card-border: rgba(197, 165, 90, 0.2);
+  --theme-card-bg: rgba(8, 6, 4, 0.80);
+  --theme-card-border: rgba(197, 165, 90, 0.12);
   --theme-text-primary: hsl(43, 30%, 96%);
   --theme-text-secondary: hsl(43, 20%, 80%);
   --theme-accent: var(--gold-500);
-  --theme-radius: 12px;
-  --theme-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-  --theme-modal-bg: rgba(20, 18, 15, 0.95);
+  --theme-radius: 6px;
+  --theme-shadow: 0 24px 64px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(197, 165, 90, 0.06), inset 0 1px 0 rgba(197, 165, 90, 0.08);
+  --theme-modal-bg: rgba(10, 8, 6, 0.97);
   --theme-modal-text: #FDFBF7;
-  --theme-card-padding: 12px;
+  --theme-card-padding: 16px 16px 20px;
 }
 
 /* 2. BRUTALIST LUXURY */
@@ -229,8 +229,8 @@ body {
   border-radius: var(--theme-radius);
   box-shadow: 0 25px 80px rgba(0,0,0,0.5);
   color: var(--theme-modal-text);
-  backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(25px);
 }
 
 .theme-text {
@@ -837,35 +837,21 @@ button, a {
    STRATEGY 3 — BOTTOM NAV CATEGORY GLOWS
    ============================================ */
 
-.nav-glow-shisha {
-  background: radial-gradient(circle, var(--cat-shisha-glow) 0%, transparent 70%);
-}
-.nav-glow-drinks {
-  background: radial-gradient(circle, var(--cat-drinks-glow) 0%, transparent 70%);
-}
-.nav-glow-food {
-  background: radial-gradient(circle, var(--cat-food-glow) 0%, transparent 70%);
-}
+/* Premium Fine Dining — All nav glows unified to gold */
+.nav-glow-shisha,
+.nav-glow-drinks,
+.nav-glow-food,
 .nav-glow-kombis {
-  background: radial-gradient(circle, var(--cat-kombis-glow) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(197, 165, 90, 0.18) 0%, transparent 70%);
 }
 
-/* Nav indicator gradient per category */
-.nav-indicator-shisha {
-  background: linear-gradient(90deg, var(--cat-shisha), hsl(15, 70%, 60%));
-  box-shadow: 0 -2px 12px var(--cat-shisha-glow), 0 0 5px rgba(255,255,255,0.8);
-}
-.nav-indicator-drinks {
-  background: linear-gradient(90deg, var(--cat-drinks), hsl(195, 75%, 70%));
-  box-shadow: 0 -2px 12px var(--cat-drinks-glow), 0 0 5px rgba(255,255,255,0.8);
-}
-.nav-indicator-food {
-  background: linear-gradient(90deg, var(--cat-food), hsl(130, 40%, 55%));
-  box-shadow: 0 -2px 12px var(--cat-food-glow), 0 0 5px rgba(255,255,255,0.8);
-}
+/* Nav indicator — single gold line for all categories */
+.nav-indicator-shisha,
+.nav-indicator-drinks,
+.nav-indicator-food,
 .nav-indicator-kombis {
-  background: linear-gradient(90deg, var(--gold-400), var(--gold-600));
-  box-shadow: 0 -2px 12px var(--cat-kombis-glow), 0 0 5px rgba(255,255,255,0.8);
+  background: linear-gradient(90deg, transparent, var(--gold-400), var(--gold-300), var(--gold-400), transparent);
+  box-shadow: 0 -1px 8px rgba(197, 165, 90, 0.4), 0 0 4px rgba(255,255,255,0.3);
 }
 
 /* Active icon float animation */
@@ -881,15 +867,16 @@ button, a {
    STRATEGY 2 — MENU ITEM CARD ENHANCEMENTS
    ============================================ */
 
-/* Signature card accent */
+/* Signature card accent — wider 3px gold bar for fine dining emphasis */
 .signature-accent-line {
   position: absolute;
   left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--gold-400), var(--gold-600), transparent);
-  border-radius: 2px;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--gold-300), var(--gold-500) 50%, transparent);
+  border-radius: 0 2px 2px 0;
+  box-shadow: 2px 0 12px rgba(197, 165, 90, 0.3);
 }
 
 /* Signature badge pill */
@@ -1085,21 +1072,21 @@ button, a {
 
 /* Component Specific Variables */
 [data-concept="neo-classic"] {
-  --theme-title-font: var(--font-display);
-  --theme-title-size: 1.15rem;
-  --theme-title-weight: normal;
+  --theme-title-font: 'Cormorant Garamond', Georgia, serif;
+  --theme-title-size: 1.25rem;
+  --theme-title-weight: 500;
   --theme-title-transform: none;
-  --theme-title-shadow: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  --theme-title-shadow: drop-shadow(0 2px 8px rgba(0,0,0,0.8));
   --theme-price-bg: transparent;
-  --theme-price-color: var(--gold-400);
-  --theme-price-shadow: drop-shadow(0 0 8px rgba(197,165,90,0.6));
+  --theme-price-color: var(--gold-300);
+  --theme-price-shadow: drop-shadow(0 0 12px rgba(197,165,90,0.5));
   --theme-price-border: none;
   --theme-price-padding: 0;
-  --theme-badge-bg: rgba(197, 165, 90, 0.2);
-  --theme-badge-color: var(--gold-400);
-  --theme-badge-border: 1px solid rgba(197, 165, 90, 0.3);
-  --theme-img-gradient: linear-gradient(to top, rgba(15, 12, 10, 1), transparent);
-  --theme-card-padding: 12px;
+  --theme-badge-bg: rgba(197, 165, 90, 0.12);
+  --theme-badge-color: var(--gold-300);
+  --theme-badge-border: 1px solid rgba(197, 165, 90, 0.25);
+  --theme-img-gradient: linear-gradient(to top, rgba(8, 6, 4, 1) 0%, rgba(8,6,4,0.5) 60%, transparent 100%);
+  --theme-card-padding: 16px 16px 20px;
 }
 
 [data-concept="brutalist"] {
@@ -1116,7 +1103,7 @@ button, a {
   --theme-badge-bg: #000;
   --theme-badge-color: #fff;
   --theme-badge-border: 1px solid #000;
-  --theme-img-gradient: linear-gradient(to top, #fff, transparent);
+  --theme-img-gradient: linear-gradient(to top, #fff 0%, rgba(255,255,255,0.4) 25%, transparent 60%);
   --theme-card-padding: 20px;
 }
 
@@ -1134,7 +1121,7 @@ button, a {
   --theme-badge-bg: rgba(197, 165, 90, 0.2);
   --theme-badge-color: var(--gold-400);
   --theme-badge-border: 1px solid rgba(197, 165, 90, 0.3);
-  --theme-img-gradient: linear-gradient(to top, #0c0a09, transparent);
+  --theme-img-gradient: linear-gradient(to top, #0c0a09 0%, rgba(12,10,9,0.5) 30%, transparent 70%);
   --theme-card-padding: 16px;
 }
 
@@ -1170,7 +1157,7 @@ button, a {
   --theme-badge-bg: transparent;
   --theme-badge-color: #e53935;
   --theme-badge-border: 1px solid #e53935;
-  --theme-img-gradient: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  --theme-img-gradient: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 30%, transparent 70%);
   --theme-card-padding: 0px;
 }
 
@@ -1188,7 +1175,7 @@ button, a {
   --theme-badge-bg: rgba(0,0,0,0.2);
   --theme-badge-color: #a8a29e;
   --theme-badge-border: none;
-  --theme-img-gradient: linear-gradient(to top, #3C3A39, transparent);
+  --theme-img-gradient: linear-gradient(to top, #3C3A39 0%, rgba(60,58,57,0.5) 30%, transparent 70%);
   --theme-card-padding: 16px;
 }
 
@@ -1206,7 +1193,7 @@ button, a {
   --theme-badge-bg: #8B0000;
   --theme-badge-color: #F3E5AB;
   --theme-badge-border: 1px solid rgba(212, 175, 55, 0.4);
-  --theme-img-gradient: linear-gradient(to top, rgba(43, 20, 27, 1), transparent);
+  --theme-img-gradient: linear-gradient(to top, rgba(43, 20, 27, 1) 0%, rgba(43,20,27,0.6) 30%, transparent 70%);
   --theme-card-padding: 20px;
 }
 
@@ -1249,3 +1236,132 @@ button, a {
 }
 
 html, body { overflow-x: clip; width: 100%; max-width: 100%; }
+
+/* ============================================
+   PREMIUM FINE DINING ADDITIONS
+   ============================================ */
+
+/* Cormorant editorial serif utility */
+.font-editorial {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-feature-settings: 'liga' 1, 'kern' 1;
+}
+
+/* Card bottom hairline — fine dining separator */
+.card-hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(197, 165, 90, 0.12) 30%, rgba(197, 165, 90, 0.12) 70%, transparent);
+  margin-top: 1.25rem;
+}
+
+/* Fine dining price — no pill, clean number */
+.price-fine-dining {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--gold-300);
+  filter: drop-shadow(0 0 8px rgba(197, 165, 90, 0.4));
+}
+
+/* Description italic serif */
+.desc-editorial {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: hsl(43, 20%, 70%);
+}
+
+/* Filterbar underline tab */
+.filter-tab {
+  position: relative;
+  padding: 0.5rem 0;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+  white-space: nowrap;
+}
+.filter-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: transparent;
+  transition: background 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.filter-tab.active {
+  color: var(--gold-300);
+}
+.filter-tab.active::after {
+  background: linear-gradient(90deg, transparent, var(--gold-400), transparent);
+  opacity: 1;
+}
+
+/* Intro silk wave */
+@keyframes silk-wave {
+  0%   { transform: translateX(-100%) skewX(-15deg) scaleY(0.8); opacity: 0; }
+  20%  { opacity: 0.6; }
+  80%  { opacity: 0.4; }
+  100% { transform: translateX(200%) skewX(-15deg) scaleY(1.1); opacity: 0; }
+}
+.animate-silk-wave {
+  animation: silk-wave 5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+/* Brand header diamond divider */
+.brand-diamond::before,
+.brand-diamond::after {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(197, 165, 90, 0.5));
+  vertical-align: middle;
+  margin: 0 0.5rem;
+}
+.brand-diamond::after {
+  background: linear-gradient(90deg, rgba(197, 165, 90, 0.5), transparent);
+}
+
+/* Stagger reveal for brand words */
+@keyframes word-reveal {
+  from { opacity: 0; transform: translateY(8px); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0);  filter: blur(0); }
+}
+.animate-word-reveal {
+  animation: word-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Bottom nav refined height */
+.nav-refined {
+  height: 5rem;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+}
+
+/* Cyber scan suppressed — leave for brutalist only */
+@keyframes cyber-scan {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.animate-cyber-scan {
+  animation: cyber-scan 3s linear infinite;
+}
+
+/* Sweep shine */
+@keyframes sweep-shine {
+  0%   { transform: translateX(-200%) skewX(-15deg); }
+  100% { transform: translateX(300%) skewX(-15deg); }
+}
+.animate-sweep-shine {
+  animation: sweep-shine 4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  animation-delay: 1.5s;
+}

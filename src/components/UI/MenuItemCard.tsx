@@ -143,13 +143,13 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
       {item.imageUrl && (
         <motion.div 
           layoutId={`image-container-${item.id}`}
-          className="relative w-full aspect-[3/4] sm:aspect-[4/5] mb-4 rounded-xl overflow-hidden bg-black/40 z-10 cursor-pointer group shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
+          className="relative w-full aspect-[4/5] mb-4 rounded-lg overflow-hidden bg-black/50 z-10 cursor-pointer group shadow-[0_12px_40px_rgba(0,0,0,0.6)]"
           onClick={(e) => {
             e.stopPropagation();
             setIsExpanded(true);
             if (navigator.vibrate) navigator.vibrate(15);
           }}
-          whileTap={{ scale: 0.96, rotate: -1 }}
+          whileTap={{ scale: 0.97, rotate: -0.5 }}
         >
           {/* Ambient blurred background */}
           <img 
@@ -169,11 +169,11 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
           <motion.img 
             src={getAssetUrl(item.imageUrl)} 
             alt={itemName} 
-            className="relative w-full h-full object-cover object-[center_30%] transition-transform duration-[800ms] ease-out group-hover:scale-105 drop-shadow-[0_0_15px_rgba(218,165,32,0.3)] brightness-90 contrast-[1.15] saturate-[1.1]" 
+            className="relative w-full h-full object-cover object-[center_25%] transition-transform duration-[900ms] ease-out group-hover:scale-104 brightness-90 contrast-[1.1] saturate-[1.05]" 
             loading="lazy"
             style={{ // NOSONAR
-              maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)'
+              maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0.4) 88%, rgba(0,0,0,0) 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0.4) 88%, rgba(0,0,0,0) 100%)'
             }}
           />
 
@@ -207,31 +207,31 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
       )}
 
       {/* Title & Badge Row */}
-      <div className="flex justify-between items-start gap-4 relative z-10">
-        <div className="flex-1">
+      <div className="flex justify-between items-start gap-3 relative z-10">
+        <div className="flex-1 min-w-0">
           {item.badge && (
-            <span className="inline-block mb-2 text-[10px] uppercase tracking-widest font-bold theme-badge">
+            <span className="inline-block mb-1.5 text-[9px] uppercase tracking-[0.22em] font-bold theme-badge">
               {typeof item.badge === 'string' ? item.badge : item.badge[lang]}
             </span>
           )}
-          <h3 className="theme-card-title flex items-center gap-3 flex-wrap">
+          <h3 className="theme-card-title flex items-center gap-2 flex-wrap leading-snug">
             {itemName}
             {concept === 'world-cup' && worldCupFlags[item.id] && (
               <img 
                 src={`https://flagcdn.com/w40/${worldCupFlags[item.id]}.png`}
                 srcSet={`https://flagcdn.com/w80/${worldCupFlags[item.id]}.png 2x`}
                 alt={`${worldCupFlags[item.id]} flag`}
-                className="h-5 w-auto rounded-[2px] shadow-[0_0_10px_rgba(255,255,255,0.4)] animate-pulse" 
+                className="h-4 w-auto rounded-[2px] opacity-80" 
                 title="World Cup Edition"
               />
             )}
           </h3>
         </div>
 
-        {/* Price + Heart */}
+        {/* Price + Actions */}
         <div className="flex flex-col items-end gap-2 shrink-0">
           <span 
-            className="font-display tracking-wider theme-price-pill"
+            className="price-fine-dining"
             aria-label={`${item.price.toFixed(2)} Euro`}
           >
             {item.price.toFixed(2).replace('.', ',')} €
@@ -278,12 +278,18 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
       </div>
 
       {/* Description & Allergens */}
-      <div className={`relative z-10 ${isSignature ? 'w-[95%] mt-2' : 'w-[88%] mt-0.5'}`}>
+      <div className={`relative z-10 ${isSignature ? 'w-[95%] mt-3' : 'w-[92%] mt-1.5'}`}>
         {isSignature && (
-          <div className="w-8 h-px bg-gold-500/40 mb-2" />
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-6 h-px bg-gold-500/40" />
+            <span className="text-gold-600/50" style={{ fontSize: '7px' }}>◆</span>
+            <div className="w-6 h-px bg-gold-500/40" />
+          </div>
         )}
-        <p className={`font-body font-light text-text-secondary leading-relaxed tracking-wide ${
-          isSignature ? 'text-[12px] italic' : 'text-[11px]'
+        <p className={`leading-relaxed tracking-wide ${
+          isSignature 
+            ? 'desc-editorial' 
+            : 'font-body font-light text-[12px] text-text-secondary/80 italic'
         }`}>
           {itemDesc}
         </p>
@@ -361,6 +367,9 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
           ))}
         </div>
       )}
+
+      {/* Fine dining hairline separator */}
+      <div className="card-hairline relative z-10" />
     </motion.article>
 
     {item.arModelUrl && createPortal(

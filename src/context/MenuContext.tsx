@@ -91,33 +91,40 @@ export function MenuProvider({ children }: { children: ReactNode }) {
 
     // Define logical ordering for Drinks
     const SUBCATEGORY_ORDER: Record<string, number> = {
-  // Shisha
-  'Premium Shisha': 1,
-  'Klassik Shisha': 2,
-  'Pfeifen': 3,
-  'HMD (Aufsätze)': 4,
-  'Shisha Extras': 5,
-  // Drinks
-  'Sommer-Specials': 10,
-  'Cocktails': 11,
-  'Mocktails': 12,
-  'Shakes': 13,
-  'Softdrinks': 14,
-  'Kaffee': 15,
-  'Eistee': 16,
-  'Wein & Sekt': 17,
-  'Bier': 18,
-  // Food
-  'Burger Gerichte': 20,
-  'Hauptgerichte': 21,
-  'Bowls & Salate': 22,
-  'Pasta Gerichte': 23,
-  // Old ones as fallback
-  'Vorspeisen': 24,
-  'Snacks': 25,
-  'Dessert': 26,
-  'Kombis': 27,
-};
+      // Shisha
+      'Signature Blends': 1,
+      'Premium Blends': 2,
+      'Classic': 3,
+      'Pfeifen': 4,
+      'HMD (Aufsätze)': 5,
+      'Shisha Extras': 6,
+      
+      // Drinks
+      'Sommer-Specials': 10,
+      'Cocktails': 11,
+      'Mocktails': 12,
+      'Homemade Iced Tea': 13,
+      'Shakes': 14,
+      'Säfte': 15,
+      'Softdrinks': 16,
+      'Kaffeespezialitäten': 17,
+      'Kaffee': 18,
+      'Eistee': 19,
+      'Wein & Sekt': 20,
+      'Bier': 21,
+      
+      // Food
+      'Vorspeisen': 30,
+      'Bowls & Salate': 31,
+      'Burger Gerichte': 32,
+      'Hauptgerichte': 33,
+      'Pasta Gerichte': 34,
+      'Snacks': 35,
+      'Dessert': 36,
+      
+      // Kombis
+      'Kombis': 40,
+    };
 
     subs.sort((a, b) => {
       const indexA = SUBCATEGORY_ORDER[a] !== undefined ? SUBCATEGORY_ORDER[a] : -1;
@@ -133,7 +140,7 @@ export function MenuProvider({ children }: { children: ReactNode }) {
   }, [allItems, activeCategory]);
 
   const filteredItems = useMemo(() => {
-    return allItems.filter(item => {
+    const items = allItems.filter(item => {
       const catMatch = item.category === activeCategory;
       const subMatch = activeSubcategory === 'All' || item.subcategory === activeSubcategory;
       const itemName = typeof item.name === 'string' ? item.name : (item.name.DE || '');
@@ -148,6 +155,20 @@ export function MenuProvider({ children }: { children: ReactNode }) {
           return item.tags?.includes(tag);
         });
       return catMatch && subMatch && searchMatch && tagMatch;
+    });
+
+    // Logical item sorting: Signature items first, then by price descending, then alphabetical
+    return items.sort((a, b) => {
+      if (a.isSignature && !b.isSignature) return -1;
+      if (!a.isSignature && b.isSignature) return 1;
+      
+      if (b.price !== a.price) {
+        return b.price - a.price;
+      }
+      
+      const nameA = typeof a.name === 'string' ? a.name : (a.name.DE || '');
+      const nameB = typeof b.name === 'string' ? b.name : (b.name.DE || '');
+      return nameA.localeCompare(nameB);
     });
   }, [allItems, activeCategory, activeSubcategory, searchQuery, activeTags]);
 
