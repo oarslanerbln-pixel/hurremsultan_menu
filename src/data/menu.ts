@@ -469,7 +469,7 @@ export const menuData: MenuItem[] = [
   {
     id: 'd14',
     name: { DE: 'Churchill 0,2l', EN: 'Churchill 0.2l', TR: 'Churchill 0,2l' },
-    price: 2.20,
+    price: 3.80,
     description: { 
       DE: 'Mineralwasser mit einem Hauch Salz und frischer Zitrone.', 
       EN: 'Mineral water with a hint of salt and fresh lemon.', 
@@ -602,7 +602,7 @@ export const menuData: MenuItem[] = [
   {
     id: 'd27',
     name: { DE: 'Cappuccino', EN: 'Cappuccino', TR: 'Cappuccino' },
-    price: 4.00,
+    price: 4.20,
     description: { DE: 'Espresso mit aufgeschäumter Milch.', EN: 'Espresso with frothed milk.', TR: 'Köpüklü süt ile espresso.' },
     imageUrl: '/images/menury_originals/kaffeespezialitaeten__cappuccino.webp',
     category: 'drinks',
@@ -712,7 +712,7 @@ export const menuData: MenuItem[] = [
   {
     id: 'd_hs_2',
     name: { DE: 'Matcha Latte', EN: 'Matcha Latte', TR: 'Matcha Latte' },
-    price: 4.90,
+    price: 5.50,
     description: { 
       DE: 'Feiner, japanischer Grüntee, cremig aufgeschäumt - für alle, die den besonderen Geschmack lieben.', 
       EN: 'Fine Japanese green tea, frothily creamed - for all who love a special taste.', 
@@ -725,7 +725,7 @@ export const menuData: MenuItem[] = [
   {
     id: 'd_hs_3',
     name: { DE: 'White Chocolate', EN: 'White Chocolate', TR: 'Beyaz Çikolata' },
-    price: 4.90,
+    price: 5.50,
     description: { 
       DE: 'Cremige weiße Schokolade, (AUF WUNSCH mit Sahne und zerkrüsselten Spekulatius) - perfekt für süße Genussmomente.', 
       EN: 'Creamy white chocolate (ON REQUEST with cream and crushed speculoos) - perfect for sweet moments of pleasure.', 
@@ -738,7 +738,7 @@ export const menuData: MenuItem[] = [
   {
     id: 'd_hs_4',
     name: { DE: 'Dark Chocolate', EN: 'Dark Chocolate', TR: 'Bitter Çikolata' },
-    price: 4.90,
+    price: 5.50,
     description: { 
       DE: 'Intensive dunkle Schokolade, (AUF WUNSCH mit Sahne) - ein Traum für Schokoladenliebhaber.', 
       EN: 'Intense dark chocolate (ON REQUEST with cream) - a dream for chocolate lovers.', 
@@ -751,7 +751,7 @@ export const menuData: MenuItem[] = [
   {
     id: 'd_hs_5',
     name: { DE: 'Sahlep', EN: 'Sahlep', TR: 'Sahlep' },
-    price: 4.50,
+    price: 5.50,
     description: { 
       DE: 'Ein traditionelles, cremiges Heißgetränk mit feiner Vanillenote und einem Hauch Zimt.', 
       EN: 'A traditional, creamy hot drink with a fine vanilla note and a hint of cinnamon.', 
