@@ -74,14 +74,14 @@ export const worldCupFlags: Record<string, string> = {
   'd_coffee_crema': 'pl',
   'd_coffee_latte': 'at',
   'd_coffee_mokka': 'ar', // Turkish Mokka (Turkey)
-  'd_coffee_cappuccino': 'br',
+  'd27': 'br',
   'd_coffee_milchkaffee': 'uy', // Cafe au lait
   'd_coffee_icedlatte': 'co',
   'd_coffee_icedcaramel': 'ec',
-  'd_hot_chai': 'cl', // Chai (India)
-  'd_hot_matcha': 'cr', // Matcha (Japan)
-  'd_hot_choco': 'pa', // Hot Choco (Belgium)
-  'd_hot_sahlep': 'jm', // Sahlep (Turkey)
+  'd_hs_1': 'cl', // Chai (India)
+  'd_hs_2': 'cr', // Matcha (Japan)
+  'd_hs_4': 'pa', // Hot Choco (Belgium)
+  'd_hs_5': 'jm', // Sahlep (Turkey)
 
   // Fresh Homemade & Smoothies & Iced Teas
   'd_fh_1': 'ma', // Hibiscus Orange Limo

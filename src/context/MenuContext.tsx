@@ -108,6 +108,7 @@ export function MenuProvider({ children }: { children: ReactNode }) {
       'Säfte': 15,
       'Softdrinks': 16,
       'Kaffeespezialitäten': 17,
+      'Heiße Specials': 17.5,
       'Kaffee': 18,
       'Eistee': 19,
       'Wein & Sekt': 20,

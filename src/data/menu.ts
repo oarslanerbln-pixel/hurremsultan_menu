@@ -108,7 +108,7 @@ export const menuData: MenuItem[] = [
     name: { DE: 'Luftschloss', EN: 'Castle in the Air', TR: 'Hayal Şatosu' },
     price: 16.90,
     description: { 
-      DE: 'Ein erfrischender Geschmack von saftiger Wassermelone kombiniert mit einem Spritzer von Limette - klare, fruchtige und unglaublich erfrischend.', 
+      DE: 'Ein erfrischender Geschmack von saftiger Wassermelone kombiniert mit einem Spritzer Limette - ein klarer, fruchtiger und unglaublich erfrischender Genuss.', 
       EN: 'A refreshing taste of juicy watermelon combined with a splash of lime - clear, fruity and incredibly refreshing.', 
       TR: 'Sulu karpuzun ferahlatıcı tadı, bir miktar misket limonu ile harmanlanıyor - net, meyvemsi ve inanılmaz derecede ferahlatıcı.' 
     },
@@ -320,7 +320,8 @@ export const menuData: MenuItem[] = [
   // Sommer-Specials
   {
     id: 'd1',
-    name: { DE: 'GOLDEN MANGO MACCHIATTO P, A, H', EN: 'GOLDEN MANGO MACCHIATTO P, A, H', TR: 'GOLDEN MANGO MACCHIATTO P, A, H' },
+    name: { DE: 'GOLDEN MANGO MACCHIATTO', EN: 'GOLDEN MANGO MACCHIATTO', TR: 'GOLDEN MANGO MACCHIATTO' },
+    allergens: ['P', 'A', 'H'],
     price: 7.50,
     description: { 
       DE: 'Die perfekte Fusion aus Orient und Okzident: Eine fruchtig-süße Basis aus goldenem Mangopüree, geschichtet mit eiskalter, cremiger Milch und abgerundet durch einen kräftigen, frisch gebrühten Espresso-Shot. Ein erfrischendes Geschmackserlebnis voller Energie.', 
@@ -334,7 +335,9 @@ export const menuData: MenuItem[] = [
   },
   {
     id: 'd2',
-    name: { DE: 'ICED STRAWBERRY VELVET 9, A, H', EN: 'ICED STRAWBERRY VELVET 9, A, H', TR: 'ICED STRAWBERRY VELVET 9, A, H' },
+    name: { DE: 'ICED STRAWBERRY VELVET', EN: 'ICED STRAWBERRY VELVET', TR: 'ICED STRAWBERRY VELVET' },
+    allergens: ['A', 'H'],
+    additives: ['9'],
     price: 7.50,
     description: { 
       DE: 'Ein samtig-cremiger Sommertraum im Glas. Fruchtiges Erdbeer-Püree trifft auf sanfte, gekühlte Milch und die edle, herbe Note von feinstem Espresso. Intensiv, fruchtig und unbeschreiblich cremig.', 
@@ -390,7 +393,8 @@ export const menuData: MenuItem[] = [
   },
   {
     id: 'd6',
-    name: { DE: 'Iced Latte G', EN: 'Iced Latte G', TR: 'Iced Latte G' },
+    name: { DE: 'Iced Latte', EN: 'Iced Latte', TR: 'Iced Latte' },
+    allergens: ['G'],
     price: 6.90,
     description: { 
       DE: 'Kalt servierter Latte Macchiato - perfekt für heiße Tage.', 
@@ -441,7 +445,8 @@ export const menuData: MenuItem[] = [
   },
   {
     id: 'd11',
-    name: { DE: 'Fanta 1, 3', EN: 'Fanta 1, 3', TR: 'Fanta 1, 3' },
+    name: { DE: 'Fanta', EN: 'Fanta', TR: 'Fanta' },
+    additives: ['1', '3'],
     price: 3.60,
     description: { DE: '0,2l', EN: '0.2l', TR: '0,2l' },
     imageUrl: '/images/menury_originals/softdrinks__fanta.webp',
@@ -499,7 +504,8 @@ export const menuData: MenuItem[] = [
   },
   {
     id: 'd17',
-    name: { DE: 'Schweppes Wild Berry 1, 3, 9', EN: 'Schweppes Wild Berry 1, 3, 9', TR: 'Schweppes Wild Berry 1, 3, 9' },
+    name: { DE: 'Schweppes Wild Berry', EN: 'Schweppes Wild Berry', TR: 'Schweppes Wild Berry' },
+    additives: ['1', '3', '9'],
     price: 3.60,
     description: { DE: '0,2l', EN: '0.2l', TR: '0,2l' },
     imageUrl: '/images/menury_originals/softdrinks__schweppes_wild_berry.webp',
@@ -508,7 +514,8 @@ export const menuData: MenuItem[] = [
   },
   {
     id: 'd18',
-    name: { DE: 'Rixdorfer Fassbrause 1, 3, 9', EN: 'Rixdorfer Fassbrause 1, 3, 9', TR: 'Rixdorfer Fassbrause 1, 3, 9' },
+    name: { DE: 'Rixdorfer Fassbrause', EN: 'Rixdorfer Fassbrause', TR: 'Rixdorfer Fassbrause' },
+    additives: ['1', '3', '9'],
     price: 4.20,
     description: { DE: '0,33l', EN: '0.33l', TR: '0,33l' },
     imageUrl: '/images/menury_originals/softdrinks__rixdorfer_fassbrause.webp',
@@ -517,7 +524,8 @@ export const menuData: MenuItem[] = [
   },
   {
     id: 'd19',
-    name: { DE: 'Club-Mate 1, 9', EN: 'Club-Mate 1, 9', TR: 'Club-Mate 1, 9' },
+    name: { DE: 'Club-Mate', EN: 'Club-Mate', TR: 'Club-Mate' },
+    additives: ['1', '9'],
     price: 4.60,
     description: { DE: '0,33l', EN: '0.33l', TR: '0,33l' },
     imageUrl: '/images/menury_originals/softdrinks__club_mate.webp',
@@ -707,6 +715,7 @@ export const menuData: MenuItem[] = [
     },
     imageUrl: '',
     category: 'drinks',
+    subcategory: 'Heiße Specials',
     tags: ['creamy', 'spicy']
   },
   {
@@ -720,11 +729,12 @@ export const menuData: MenuItem[] = [
     },
     imageUrl: '/images/menury_originals/heisse_specials__matcha_latte.webp',
     category: 'drinks',
+    subcategory: 'Heiße Specials',
     tags: ['creamy', 'matcha']
   },
   {
     id: 'd_hs_3',
-    name: { DE: 'White Chocolate', EN: 'White Chocolate', TR: 'Beyaz Çikolata' },
+    name: { DE: 'Weiße Schokolade', EN: 'White Chocolate', TR: 'Beyaz Çikolata' },
     price: 5.50,
     description: { 
       DE: 'Cremige weiße Schokolade, (AUF WUNSCH mit Sahne und zerkrüsselten Spekulatius) - perfekt für süße Genussmomente.', 
@@ -733,11 +743,12 @@ export const menuData: MenuItem[] = [
     },
     imageUrl: '/images/menury_originals/heisse_specials__white_chocolate.webp',
     category: 'drinks',
+    subcategory: 'Heiße Specials',
     tags: ['creamy', 'sweet']
   },
   {
     id: 'd_hs_4',
-    name: { DE: 'Dark Chocolate', EN: 'Dark Chocolate', TR: 'Bitter Çikolata' },
+    name: { DE: 'Dunkle Schokolade', EN: 'Dark Chocolate', TR: 'Bitter Çikolata' },
     price: 5.50,
     description: { 
       DE: 'Intensive dunkle Schokolade, (AUF WUNSCH mit Sahne) - ein Traum für Schokoladenliebhaber.', 
@@ -746,6 +757,7 @@ export const menuData: MenuItem[] = [
     },
     imageUrl: '/images/menury_originals/heisse_specials__dark_chocolate.webp',
     category: 'drinks',
+    subcategory: 'Heiße Specials',
     tags: ['intense', 'sweet']
   },
   {
@@ -759,6 +771,7 @@ export const menuData: MenuItem[] = [
     },
     imageUrl: '/images/menury_originals/heisse_specials__sahlep.webp',
     category: 'drinks',
+    subcategory: 'Heiße Specials',
     tags: ['creamy', 'classic']
   },
 
@@ -907,7 +920,8 @@ export const menuData: MenuItem[] = [
   },
   {
     id: 'd_fh_4',
-    name: { DE: 'Softy Gold G', EN: 'Softy Gold G', TR: 'Softy Gold G' },
+    name: { DE: 'Softy Gold', EN: 'Softy Gold', TR: 'Softy Gold' },
+    allergens: ['G'],
     price: 6.90,
     description: { 
       DE: 'Cremige Kombination aus frischen Mangostücken, Joghurt, Zucker und Milch - tropisch und samtig.', 
@@ -935,7 +949,8 @@ export const menuData: MenuItem[] = [
   },
   {
     id: 'd_fh_6',
-    name: { DE: 'Berry Yakult Peach Limo G', EN: 'Berry Yakult Peach Lemonade G', TR: 'Orman Meyveli Yakult Şeftali Limonata G' },
+    name: { DE: 'Berry Yakult Peach Limo', EN: 'Berry Yakult Peach Lemonade', TR: 'Orman Meyveli Yakult Şeftali Limonata' },
+    allergens: ['G'],
     price: 7.40,
     description: { 
       DE: 'Frische Beeren, kombiniert mit Yakult und Whitepeach - eine spritzige und fruchtige Spezialität.', 
@@ -963,7 +978,8 @@ export const menuData: MenuItem[] = [
   },
   {
     id: 'd_fh_8',
-    name: { DE: 'Rosé G', EN: 'Rosé G', TR: 'Rosé G' },
+    name: { DE: 'Rosé', EN: 'Rosé', TR: 'Rosé' },
+    allergens: ['G'],
     price: 7.40,
     description: { 
       DE: 'Frische Beeren, Kokosnussmilch, Holunderblütensirup, Hibiskustee.', 
@@ -1177,7 +1193,7 @@ export const menuData: MenuItem[] = [
   },
   {
     id: 'f_pasta_6',
-    name: { DE: 'Rigatoni Cremy Chicken', EN: 'Rigatoni Creamy Chicken', TR: 'Rigatoni Creamy Chicken' },
+    name: { DE: 'Rigatoni Creamy Chicken', EN: 'Rigatoni Creamy Chicken', TR: 'Rigatoni Creamy Chicken' },
     price: 13.90,
     description: { DE: 'Rigatoni-Nudeln mit Hähnchenbruststreifen, Champignons und Brokkoli in Sahnesoße. Getoppt mit Parmesan.\nMit knusprig panierten Hähnchenstücken: 14,90 €', EN: 'Rigatoni pasta with chicken breast strips, mushrooms and broccoli in cream sauce. Topped with Parmesan.\nWith crispy breaded chicken pieces: €14.90', TR: 'Tavuk göğsü şeritleri, mantar ve brokoli ile krema soslu rigatoni makarna. Parmesan ile taçlandırılmış.\nÇıtır panelenmiş tavuk parçaları ile: 14,90 €' },
     imageUrl: '',
@@ -1589,111 +1605,6 @@ export const menuData: MenuItem[] = [
     subcategory: 'Kaffeespezialitäten',
     tags: ['intense', 'classic']
   },
-  // --- Fresh Homemade ---
-  {
-    id: 'd_fh_1',
-    name: { DE: 'Hibiscus Orange Limo', EN: 'Hibiscus Orange Limo', TR: 'Hibiscus Orange Limo' },
-    price: 6.90,
-    description: { 
-      DE: 'Orangensaft mit Hibiskustee und ein Hauch von Limettensaft - fruchtig und erfrischend.', 
-      EN: 'Orange juice with hibiscus tea and a hint of lime juice - fruity and refreshing.', 
-      TR: 'Portakal suyu, ebegümeci çayı ve bir dokunuş misket limonu - meyvemsi ve ferahlatıcı.' 
-    },
-    imageUrl: '',
-    category: 'drinks',
-    subcategory: 'Fresh Homemade',
-  },
-  {
-    id: 'd_fh_2',
-    name: { DE: '53', EN: '53', TR: '53' },
-    price: 6.90,
-    description: { 
-      DE: 'Ein exotischer Mix aus Maracujasaft, Rohrzucker, Jasmintee und frischer Minze - pure Harmonie im Glas.', 
-      EN: 'An exotic mix of passion fruit juice, cane sugar, jasmine tea and fresh mint - pure harmony in a glass.', 
-      TR: 'Çarkıfelek meyvesi suyu, esmer şeker, yasemin çayı ve taze nanenin egzotik karışımı - bardakta saf uyum.' 
-    },
-    imageUrl: '',
-    category: 'drinks',
-    subcategory: 'Fresh Homemade',
-  },
-  {
-    id: 'd_fh_3',
-    name: { DE: 'Blue Wonder', EN: 'Blue Wonder', TR: 'Blue Wonder' },
-    price: 6.90,
-    description: { 
-      DE: 'Jasmin- und blauer Blütentee treffen auf Aloe Vera und frische Blaubeeren - ein wahrer Genuss für die Sinne.', 
-      EN: 'Jasmine and blue blossom tea meet aloe vera and fresh blueberries - a real treat for the senses.', 
-      TR: 'Yasemin ve mavi çiçek çayı, aloe vera ve taze yaban mersini ile buluşuyor - duyular için gerçek bir şölen.' 
-    },
-    imageUrl: '',
-    category: 'drinks',
-    subcategory: 'Fresh Homemade',
-  },
-  {
-    id: 'd_fh_4',
-    name: { DE: 'Softy Gold', EN: 'Softy Gold', TR: 'Softy Gold' },
-    price: 6.90,
-    description: { 
-      DE: 'Cremige Kombination aus frischen Mangostückchen, Joghurt, Zucker und Milch - tropisch und samtig.', 
-      EN: 'Creamy combination of fresh mango pieces, yogurt, sugar and milk - tropical and velvety.', 
-      TR: 'Taze mango parçaları, yoğurt, şeker ve sütün kremsi kombinasyonu - tropikal ve kadifemsi.' 
-    },
-    imageUrl: '',
-    category: 'drinks',
-    subcategory: 'Fresh Homemade',
-  },
-  {
-    id: 'd_fh_5',
-    name: { DE: 'Aloe Vera', EN: 'Aloe Vera', TR: 'Aloe Vera' },
-    price: 6.90,
-    description: { 
-      DE: 'Reiner Aloe-Vera-Drink für eine erfrischende und gesunde Auszeit.', 
-      EN: 'Pure aloe vera drink for a refreshing and healthy break.', 
-      TR: 'Ferahlatıcı ve sağlıklı bir mola için saf aloe vera içeceği.' 
-    },
-    imageUrl: '',
-    category: 'drinks',
-    subcategory: 'Fresh Homemade',
-  },
-  {
-    id: 'd_fh_6',
-    name: { DE: 'Berry Yakult Peach Limo', EN: 'Berry Yakult Peach Limo', TR: 'Berry Yakult Peach Limo' },
-    price: 7.40,
-    description: { 
-      DE: 'Frische Beeren, kombiniert mit Yakult und Whitepeach - eine spritzige und fruchtige Spezialität.', 
-      EN: 'Fresh berries combined with Yakult and white peach - a sparkling and fruity specialty.', 
-      TR: 'Yakult ve beyaz şeftali ile birleştirilmiş taze meyveler - canlı ve meyveli bir spesiyalite.' 
-    },
-    imageUrl: '',
-    category: 'drinks',
-    subcategory: 'Fresh Homemade',
-  },
-  {
-    id: 'd_fh_7',
-    name: { DE: 'Pink Lover', EN: 'Pink Lover', TR: 'Pink Lover' },
-    price: 7.40,
-    description: { 
-      DE: 'Eine bezaubernde Mischung aus Mineralwasser, frischem Zitronensaft und Drachenfruchtpüree.', 
-      EN: 'An enchanting mixture of mineral water, fresh lemon juice and dragon fruit puree.', 
-      TR: 'Maden suyu, taze limon suyu ve ejder meyvesi püresinin büyüleyici bir karışımı.' 
-    },
-    imageUrl: '',
-    category: 'drinks',
-    subcategory: 'Fresh Homemade',
-  },
-  {
-    id: 'd_fh_8',
-    name: { DE: 'Rosé', EN: 'Rosé', TR: 'Rosé' },
-    price: 7.40,
-    description: { 
-      DE: 'Frische Beeren, Kokosnussmilch, Holunderblütensirup, Hibiskustee.', 
-      EN: 'Fresh berries, coconut milk, elderflower syrup, hibiscus tea.', 
-      TR: 'Taze meyveler, hindistan cevizi sütü, mürver çiçeği şurubu, ebegümeci çayı.' 
-    },
-    imageUrl: '',
-    category: 'drinks',
-    subcategory: 'Fresh Homemade',
-  },
 
   // --- Smoothies ---
   {
@@ -1762,48 +1673,7 @@ export const menuData: MenuItem[] = [
     subcategory: 'Smoothies',
   },
 
-  // --- Homemade Iced Tea (Additional) ---
-  {
-    id: 'd_hit_6',
-    name: { DE: 'Cotton Candy', EN: 'Cotton Candy', TR: 'Cotton Candy' },
-    price: 6.90,
-    description: { 
-      DE: 'Ein verspielter Eistee mit dem süßen Geschmack von Zuckerwatte - ein echtes Highlight.', 
-      EN: 'A playful iced tea with the sweet taste of cotton candy - a real highlight.', 
-      TR: 'Pamuk şekerin tatlı lezzetiyle eğlenceli bir soğuk çay - tam bir hit.' 
-    },
-    imageUrl: '',
-    category: 'drinks',
-    subcategory: 'Homemade Iced Tea',
-  },
-  {
-    id: 'd_hit_7',
-    name: { DE: 'Kaktus Feige', EN: 'Cactus Fig', TR: 'Kaktüs İnciri' },
-    price: 6.90,
-    description: { 
-      DE: 'Ein exotischer Genuss mit dem einzigartigen Aroma von Kaktusfeigen.', 
-      EN: 'An exotic treat with the unique aroma of cactus figs.', 
-      TR: 'Kaktüs incirinin eşsiz aromasıyla egzotik bir keyif.' 
-    },
-    imageUrl: '',
-    category: 'drinks',
-    subcategory: 'Homemade Iced Tea',
-  },
   // --- Missing Kaffeespezialitäten & Hot Drinks ---
-  {
-    id: 'd_coffee_cappuccino',
-    name: { DE: 'Cappuccino', EN: 'Cappuccino', TR: 'Cappuccino' },
-    price: 3.80,
-    description: { 
-      DE: 'Ein klassischer Espresso mit viel aufgeschäumter Milch und Milchschaumkrone.', 
-      EN: 'A classic espresso with plenty of frothed milk and a milk foam crown.', 
-      TR: 'Bol köpüklü süt ve süt köpüğü tacı ile klasik bir espresso.' 
-    },
-    imageUrl: '/images/menury_originals/kaffeespezialitaeten__cappuccino.webp',
-    category: 'drinks',
-    subcategory: 'Kaffeespezialitäten',
-    tags: ['creamy', 'classic']
-  },
   {
     id: 'd_coffee_milchkaffee',
     name: { DE: 'Milchkaffee', EN: 'Café au Lait', TR: 'Sütlü Kahve' },
@@ -1846,62 +1716,6 @@ export const menuData: MenuItem[] = [
     subcategory: 'Kaffeespezialitäten',
     tags: ['cold', 'sweet']
   },
-  {
-    id: 'd_hot_chai',
-    name: { DE: 'Chai Latte', EN: 'Chai Latte', TR: 'Chai Latte' },
-    price: 4.50,
-    description: { 
-      DE: 'Würziger indischer Schwarztee mit Gewürzen, aufgegossen mit heißer, geschäumter Milch.', 
-      EN: 'Spicy Indian black tea with spices, infused with hot, frothed milk.', 
-      TR: 'Sıcak köpüklü sütle demlenmiş, baharatlı Hint siyah çayı.' 
-    },
-    imageUrl: '',
-    category: 'drinks',
-    subcategory: 'Kaffeespezialitäten',
-    tags: ['spicy', 'creamy', 'tea']
-  },
-  {
-    id: 'd_hot_matcha',
-    name: { DE: 'Matcha Latte', EN: 'Matcha Latte', TR: 'Matcha Latte' },
-    price: 4.80,
-    description: { 
-      DE: 'Fein gemahlener japanischer Grüntee, cremig aufgeschlagen mit heißer Milch.', 
-      EN: 'Finely ground Japanese green tea, whipped creamily with hot milk.', 
-      TR: 'Sıcak sütle kremsi bir şekilde çırpılmış ince öğütülmüş Japon yeşil çayı.' 
-    },
-    imageUrl: '/images/menury_originals/heisse_specials__matcha_latte.webp',
-    category: 'drinks',
-    subcategory: 'Kaffeespezialitäten',
-    tags: ['bio', 'creamy']
-  },
-  {
-    id: 'd_hot_choco',
-    name: { DE: 'Heiße Schokolade', EN: 'Hot Chocolate', TR: 'Sıcak Çikolata' },
-    price: 4.20,
-    description: { 
-      DE: 'Cremige, heiße Schokolade aus feinster Kakaobohne - ein Trost für die Seele.', 
-      EN: 'Creamy hot chocolate made from the finest cocoa beans - comfort for the soul.', 
-      TR: 'En kaliteli kakao çekirdeklerinden yapılmış kremsi sıcak çikolata - ruhunuzu ısıtır.' 
-    },
-    imageUrl: '',
-    category: 'drinks',
-    subcategory: 'Kaffeespezialitäten',
-    tags: ['sweet', 'creamy']
-  },
-  {
-    id: 'd_hot_sahlep',
-    name: { DE: 'Sahlep', EN: 'Sahlep', TR: 'Salep' },
-    price: 4.50,
-    description: { 
-      DE: 'Traditionelles heißes, cremiges Wintergetränk aus Orchideenwurzelmehl, garniert mit Zimt.', 
-      EN: 'Traditional hot, creamy winter drink made from orchid root flour, garnished with cinnamon.', 
-      TR: 'Tarçınla süslenmiş, orkide kökü tozundan yapılan geleneksel sıcak ve kremsi kış içeceği.' 
-    },
-    imageUrl: '',
-    category: 'drinks',
-    subcategory: 'Kaffeespezialitäten',
-    tags: ['traditional', 'sweet']
-  }
 
 
 
